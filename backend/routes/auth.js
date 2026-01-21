@@ -15,8 +15,15 @@ router.post('/login', async (req, res, next) => {
     const username = req.body.username.toUpperCase();
     const password = req.body.password;
 
+    let queryUser = "";
+    if(username.length == 7 && username.substring(0,2)=='TP'){
+     queryUser = "SELECT id,  password,  username FROM public.users where upper(user_id_code) = $1";
+    } else {
+      queryUser = "SELECT id,  password,  username FROM public.users where upper(username) = $1";
+    }
+
     const users = await query(
-      'SELECT id, username, password, role FROM users WHERE upper(username)=$1',
+      queryUser,
       [username]
     );
     if (!users[0]) return res.status(401).json({ message: 'Invalid' });
