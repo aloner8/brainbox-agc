@@ -9,19 +9,18 @@ networks:
 services:
 
   nginx:
-nginx:
-  build:
-    context: .
-    dockerfile: nginx/Dockerfile   # 👈 ใช้ Dockerfile ที่ build Angular
-  container_name: brainbox_nginx_dev
-  ports:
-    - "81:80"
-  networks:
-    - net_web
-    - net_api
-  depends_on:
-    - backend
-  restart: unless-stopped
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile   # 👈 ใช้ Dockerfile ที่ build Angular
+    container_name: brainbox_nginx_dev
+    ports:
+      - "81:80"
+    networks:
+      - net_web
+      - net_api
+    depends_on:
+      - backend
+    restart: unless-stopped
 
 
   backend:
