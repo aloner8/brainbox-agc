@@ -124,10 +124,9 @@ UserToken(){
     this.setInProcessState('connecting','begin')
     deviceInfo['apikey'] = appConfigs['apikey']
    //console.log('deviceInfo',deviceInfo);
-      return this.http.post<any>(rootpoint +  '/connecting'  , deviceInfo , httpOptions).pipe(
-        tap((s: any) =>console.log(s)),
-        catchError(this.handleError<any>('GenExcel'))
-      );
+       
+      return this.http.get<any>(rootpoint + `/health`)    
+      
       
     }
 
