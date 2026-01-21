@@ -10,12 +10,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/', require('./routes/index'));
-app.use('/api/health', require('./routes/health'));
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/password', require('./routes/password'));
-app.use('/api/user', require('./routes/users'));
-app.use('/api/db', require('./routes/db'));
+app.use('/', require('./routes/index'));
+app.use('/health', require('./routes/health'));
+app.use('/auth', require('./routes/auth'));
+app.use('/password', require('./routes/password'));
+app.use('/user', require('./routes/users'));
+app.use('/db', require('./routes/db'));
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not Found' });
