@@ -1,0 +1,26 @@
+
+
+
+<div *ngIf="tiles && tiles!= []" >
+  <mat-grid-list cols="4" rowHeight="100px">
+    @for (tile of tiles; track tile ; let idx = $index) {
+      <mat-grid-tile
+        [colspan]="tile.colspan"
+        [rowspan]="tile.rowspan">
+            {{tile.colspan }}
+         
+            @for (control of tile['controls']; track control ; let idxc = $index) {
+              <app-form-mat-field [id]="idx" [Properties]="control.Properties" [Type]="control.type"  ></app-form-mat-field>                  
+            }
+      </mat-grid-tile>
+    }
+  </mat-grid-list>
+</div>
+<div *ngIf="!tiles || tiles== []" >
+  <p>form-mat works!</p>
+</div>
+  <ng-content>
+    
+  </ng-content>
+
+

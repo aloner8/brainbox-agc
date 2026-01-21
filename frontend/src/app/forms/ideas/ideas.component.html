@@ -1,0 +1,99 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start"  [(selectedIndex)]="selectedIndex" (selectedIndexChange)="selectedIndexChange($event)"  id="ideatabheader">
+    <mat-tab  > 
+        <ng-template mat-tab-label >
+            <span style="width: 120px; text-align: left; " >Idea List</span>
+        </ng-template> 
+        <table-list-ideas style="width: 100%;margin-left: 30px;"  [Parent]="Me" (SendEvents)="ChildEvent($event)" >
+
+        </table-list-ideas> 
+    </mat-tab>
+    <mat-tab label="Idea Detail" [disabled]="!ProjectDetail.running" > 
+        <ng-template mat-tab-label >
+            <span style="width: 200px; text-align: left; " >Idea Detail {{ProjectDetail.running?':' + ProjectDetail.running:'' }}</span>
+        </ng-template> 
+        <table class="TableDetail" [style.width.%]="100"   style="overflow: visible; vertical-align: top; " >
+            <tr>
+                <td colspan="2" style="top: 0px; vertical-align: top; height: 60px;" >
+                    <ideas-process-bar  [Name]="'stepBar'" [Parent]="Me"   (SendEvents)="ChildEvent($event)" >
+                        
+                    </ideas-process-bar>
+                </td>
+            </tr>
+            <tr [style.height.px]="50" >
+                <td colspan="2" >
+                    <table [style.width.%]="100"[style.height.%]="100" class="topdetail">
+                        <tr>
+                            <td>{{ProjectDetail.running}}</td>
+                            <td>{{ProjectDetail.title}}</td>
+                            <td>{{ProjectDetail.subideasname}}</td>
+                            <td>By:{{ProjectDetail.fullname}}</td>
+                            <td>Division:{{ProjectDetail.division}}</td>
+                            <td>Open:{{ProjectDetail.suggest_date}}</td>
+                        </tr>
+                    </table>
+                     
+                </td>
+            </tr>
+            <tr *ngIf="getHasCommandButton()"  >         
+                <td style="width: 50%;"> 
+                </td>
+                <td   >
+<ideas-command [Name]="'IdeasCommandButton'"    [ShowMode]="'Detail'" [CurrentState] ="ProjectDetail.current_status" [Parent]="Me" (SendEvents)="ChildEvent($event)"   >
+
+                    </ideas-command>
+                </td>           
+                
+                </tr>
+            <tr style="background-color: greenyellow;"   >
+                <td colspan="2" style="width: 100%;">
+                    <form-ideas-detail  [ShowMode]="'Detail'"  [Name]="'ProjectDetail'"  [Parent]="Me"   [ProjectDetail]="ProjectDetail"  (SendEvents)="ChildEvent($event)" style="width: 100%;   " >
+
+                    </form-ideas-detail>    
+                              
+                </td>
+        <!--         <td style="width: 18%;vertical-align: top;" *ngIf="ProjectDetail.userlevel" >
+                    <ideas-command [Name]="'IdeasCommandButton'"    [ShowMode]="'Detail'" [CurrentState] ="ProjectDetail.current_status" [Parent]="Me" (SendEvents)="ChildEvent($event)"  *ngIf="!CommandButtonDisable" >
+
+                    </ideas-command>
+                </td> -->
+            </tr>
+        </table>
+   
+    </mat-tab>
+    <mat-tab label="+New Ideas"> 
+        <ng-template mat-tab-label >
+            <span style="width: 150px; text-align: left; font-size: large;color: green; " >+New Ideas</span>
+        </ng-template> 
+        <table class="TableDetail" [style.width.%]="100">
+            <tr>
+                <td colspan="2" >
+                    <ideas-process-bar  [Name]="'stepBarNew'" [Parent]="Me"  (SendEvents)="ChildEvent($event)" >
+                        
+                    </ideas-process-bar>
+                </td>
+            </tr>
+            <tr>
+                 <td style="width: 50%;" >
+
+                </td>
+                <td  >
+<ideas-command [Name]="'IdeasCommandButtonNew'"   [ShowMode]="'NewIdeas'"  [CurrentState] ="0" [Parent]="Me" (SendEvents)="ChildEvent($event)" style="width: 100%;" >
+
+                    </ideas-command>
+                </td>                    
+                
+                </tr>
+            <tr>
+                <td colspan="2" style="width: 100%;">
+                    <form-ideas-detail  [ShowMode]="'NewIdeas'" [Name]="'ProjectDetailNew'"  [Parent]="Me"   (SendEvents)="ChildEvent($event)" [ProjectDetail]="ProjectDetailNew" style="width: 100%;top:30px;  " >
+
+                    </form-ideas-detail>   
+                           
+                </td>
+              
+            </tr>
+        </table>
+         
+     </mat-tab>
+  </mat-tab-group>
+

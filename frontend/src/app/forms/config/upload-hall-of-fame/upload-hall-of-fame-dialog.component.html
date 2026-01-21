@@ -1,0 +1,70 @@
+
+
+<div class="confirm-form">
+    <div class="topdialog"><mat-icon class="material-symbols-outlined" (click)="onCloseClick()">close</mat-icon> </div> 
+ 
+            
+             <p style="font-size: larger; text-align: center;"  > Level User Data</p> 
+            <!-- <td><p   style="text-align: left;" >-{{data.SubCaption}} </p></td> -->
+     
+    
+    
+    <mat-dialog-content  >
+
+
+        
+<!-- 
+        <mat-form-field  appearance="fill" *ngIf="data.showList" >
+            <mat-select [style.border-color]="'white'"  [(ngModel)]="listseleted" name="listseleted" (selectionChange)="listseletedChange($event)" >             
+              @for (list of data.ListSource; track list ) {
+                <mat-option [value]="list.value">{{list.display}}</mat-option>
+              }
+            </mat-select>      
+            <mat-label>{{data.ListLabel}}</mat-label>
+          </mat-form-field>
+ -->
+        <mat-form-field appearance="fill"   style="width: 100%;" *ngIf="showRemark">
+            <mat-label>ID</mat-label>
+            <input matInput  [readonly]="data.IsAdmin" style="width: 100%;font-weight: bold;"   [(ngModel)]="data.id" required >
+        </mat-form-field>
+        <mat-form-field appearance="fill"  style="width: 100%;" *ngIf="showRemark">
+            <mat-label>description</mat-label>
+            <input matInput   [readonly]="data.IsAdmin"style="width: 100%;font-weight: bold;"   [(ngModel)]="data.description" required >
+        </mat-form-field>
+        <mat-form-field appearance="fill"  style="width: 100%;" *ngIf="showRemark">
+            <mat-label>minimum_point</mat-label>
+            <input matInput  [readonly]="data.IsAdmin"  style="width: 100%;font-weight: bold;"   [(ngModel)]="data.minimum_point" required >
+        </mat-form-field>
+        <mat-form-field appearance="fill"  style="width: 100%;" *ngIf="showRemark">
+            <mat-label>maximum_point</mat-label>
+            <input matInput  [readonly]="data.IsAdmin"  style="width: 100%;font-weight: bold;"   [(ngModel)]="data.maximum_point" required > 
+        </mat-form-field>
+        <!-- 
+        <mat-form-field appearance="fill"  style="width: 100%;" *ngIf="showRemark">
+            <mat-label>Remark</mat-label>
+            <textarea matInput  *ngIf="showErrorLabel" style="width: 100%;font-weight: bold;" [formControl]="ContextControl"  [(ngModel)]="comment" required ></textarea>
+            <textarea matInput  *ngIf="!showErrorLabel" style="width: 100%;font-weight: bold;" [formControl]="ContextControl"  [(ngModel)]="comment"  ></textarea>
+ 
+         </mat-form-field> -->
+
+         <p [style.color]="'white' "   > created_at : {{data.created_at  | date: 'dd/MM/yyyy HH:mm'}}</p>
+         <p [style.color]="'white'"    > updated_at : {{data.updated_at  | date: 'dd/MM/yyyy HH:mm'}}</p>
+         
+
+         
+
+         <label *ngIf="showErrorLabel" style="color: red;" >{{ErrorLabel}}</label>
+    </mat-dialog-content>
+
+    <mat-dialog-actions style="text-align: center; width: 100%;"  align="center"> 
+        <button *ngIf="data.IsAdmin" mat-raised-button color="primary" (click)="onConfirm()" >Save</button> 
+        <button  mat-raised-button color="primary" (click)="onCloseClick()" >Close</button> 
+
+    </mat-dialog-actions>
+
+</div>
+
+
+
+
+

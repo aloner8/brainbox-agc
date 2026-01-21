@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>{{key_array[1]}}</h2>
+<p style="text-align: center; font-size: larger; " >{{key_array[2]}}</p>
+<mat-dialog-content>
+  <p>What's your find Idea ?</p>
+      <mat-form-field  appearance="outline"   >
+        <mat-label>Idea Number</mat-label>  
+        <input matInput type="text" pattern="\d{1,8}" maxlength="8" placeholder="" style="width: 100%;color: rgb(12, 13, 90);"    [(ngModel)]="filterinput" (keyup)="GetIdeaListByYear($event)" >  
+    
+      </mat-form-field>
+      <p>
+        Name:  {{idea_title}}
+      </p>
+
+      <p  [style.color]="CheckApply? 'green' : 'red' ">  
+        Status: {{ideaDetail.currentstatus}}        
+      </p>
+      <p>
+        Division : {{ideaDetail.division}}        
+      </p>
+      <p>
+        Catagory : {{ideaDetail.subideasname}}        
+      </p>
+      <p>
+        Suggest Date : {{ideaDetail.suggest_date}}        
+      </p>
+      <p style="color: orangered;">
+        {{ExsitsIdeaText}}        
+      </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button  [disabled]="!CheckApply || CheckDuplicate"   [mat-dialog-close]="data"  cdkFocusInitial (click)="onSaveClick()">Save</button>
+</mat-dialog-actions>

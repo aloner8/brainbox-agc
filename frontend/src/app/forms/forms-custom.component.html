@@ -1,0 +1,25 @@
+<!-- {{formname}} -->
+ <h1 class="pageCaption">{{formname}} </h1>
+<ng-container *ngIf="formname=='home'" [style.width.%]="100">
+  <cus-home  [style.width.%]="100" [style.top.px]="-30" ></cus-home>
+</ng-container>
+<ng-container *ngIf="formname=='ideas'" [style.width.%]="100">
+  <cus-ideas  [style.width.%]="100"  [style.height.%]="90"  [style.top.px]="0" ></cus-ideas>
+</ng-container>
+<ng-container *ngIf="formname=='profile'" [style.width.%]="100">
+  <cus-profile  [style.width.%]="100"  [style.height.%]="90"  [style.top.px]="0"  [UserInfo]="" ></cus-profile>
+</ng-container>
+<ng-container *ngIf="formname=='dashboard'" [style.minWidth.%]="100" [style.width.auto]="true" >
+  <cus-dashboard [style.minWidth.%]="100" [style.width.auto]="true"  [style.height.%]="90"  [style.top.px]="0"    ></cus-dashboard>
+</ng-container>
+<ng-container *ngIf="formname=='config'" [style.width.%]="100">
+  <cus-config  [style.width.%]="100"  [style.height.%]="90"  [style.top.px]="0"   [style.left.px]="-50"    ></cus-config>
+</ng-container>
+
+<ng-container *ngIf="formname=='reports'" [style.width.%]="100">
+  <cus-reports [style.width.%]="100"  [style.height.%]="90"  [style.top.px]="0"   [style.left.px]="-50"    ></cus-reports>
+</ng-container>
+
+
+
+

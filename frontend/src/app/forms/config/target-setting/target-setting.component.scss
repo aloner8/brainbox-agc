@@ -1,0 +1,134 @@
+table.header {
+  background-color: transparent;
+  height: 80px;
+}
+table.detail {
+  background-color: white;
+  border-radius: 30px;
+  border: solid 1px ;
+  text-align: left;
+  font-size: small;
+}
+table.detail td {
+  background-color: white;
+  border: solid 1px ;
+  border-color: blue;
+  color: black;
+  
+}
+
+table.detail td input {
+  background-color: white;
+   
+  border:none;
+  color: black;
+  
+}
+.mat-elevation-z8 {
+  border-radius: 40px;
+  padding: 10px;
+  color: white;
+  background-image: url('../../../../assets/img/table-box.svg');
+  background-repeat: no-repeat;
+ overflow: visible;
+  background-size:cover;
+}
+div.around {
+  overflow: visible;
+}
+
+a.runnumber {
+  font-size: large;
+  font-weight: bolder;
+  cursor:pointer ;
+}
+a.runnumber:hover {
+  font-size: large;
+  font-weight: bolder;
+  cursor:pointer ;
+  background-color: rgb(11, 61, 225);
+}
+
+#tabledetail.mat-mdc-cell  {
+  border-color: white;
+  overflow-y: scroll;
+}
+
+.mat-date-range-input-separator{
+  color: white !important;
+}
+th{
+  background-color: blue;
+  color: white;
+  font-weight: bolder;
+}
+
+mat-table-row-item-outline-color {
+  border-color: white;
+}
+mat-mdc-cell {
+  border-color: white;
+}
+mat-cell {
+  border-color: white;
+}
+mat-form-field  {
+ position: relative;
+  background-color: rgba(9, 24, 90, 0.2);
+  color: blue;
+  border-color: white;
+  margin-right: 10px;
+}
+
+
+
+ input {
+ 
+  background-color:transparent;
+  color: white;
+
+  
+}
+.mdc-notched-outline {
+  border-color: white;
+}
+.mdc-notched-outline--upgraded{
+  border-color: white;
+} 
+.ng-star-inserted{
+  border-color: white;
+}
+.cdk-overlay-container{
+  border-color: white;
+}
+.placeholder {
+  background-color:transparent;
+  color: white;
+}
+mat-label {
+  background-color:transparent;
+  color: white;
+}
+mat-select{
+  background-color:transparent;
+  color: white;
+}
+mat-paginator{
+  background-color: rgba(9, 24, 90, 0.2);
+  color: white;
+}
+td  {
+  color: white;
+}
+th  {
+  color: white;
+}
+/* Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+}
+/* Font color */
+input.mat-input-element {
+  color: white;
+}
+

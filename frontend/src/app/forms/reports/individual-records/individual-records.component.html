@@ -1,0 +1,95 @@
+ 
+       
+       <table style="width: 100%; height: 100%;">
+          <tr>
+            <td >  
+                      
+           <!--    <year-picker [Name]="'YearStart'" [Parent]="Me" *ngIf="veiw_type=='Y'"  (SendEvents)="ChildEvent( $event ,'M')"  style="width: 100px;" [Label]="'Start'" >
+
+              </year-picker> -->
+              <month-picker  [Name]="'MonthStart'" [Parent]="Me" *ngIf="veiw_type=='M'"  (SendEvents)="ChildEvent( $event ,'M')"  style="width: 100px;" [Label]="'Start'">
+
+              </month-picker>
+              ||
+                       
+           <!--    <year-picker [Name]="'YearEnd'" [Parent]="Me" *ngIf="veiw_type=='Y'"  (SendEvents)="ChildEvent( $event ,'M')"  style="width: 100px;" [Label]="'End'" >
+
+              </year-picker> -->
+              <month-picker   [Name]="'MonthEnd'" [Parent]="Me" *ngIf="veiw_type=='M'"  (SendEvents)="ChildEvent( $event ,'M')"  style="width: 100px;"  [Label]="'End'">
+
+              </month-picker>
+              ||
+              <mat-form-field  appearance="fill" >
+                <mat-select [style.border-color]="'white'"  [(ngModel)]="divitionfilter" name="divitionfilter" (selectionChange)="StatusFilterChange($event)" >
+                  <mat-option  [value]="'ALL'">-- ALL --</mat-option>
+                  @for (list of departmentlist; track list ) {
+                    <mat-option [value]="list.display">{{list.display}}</mat-option>
+                  }
+                </mat-select>      
+                <mat-label>Division:</mat-label>
+              </mat-form-field>
+              ||
+<!--               <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color" [value]="veiw_type" (change)="changeView($event)" >
+                <mat-button-toggle value="M">Monthly</mat-button-toggle>
+                <mat-button-toggle value="Y">Yearly</mat-button-toggle>
+                
+              </mat-button-toggle-group> -->
+            <!--   <mat-form-field  appearance="fill" >
+                <mat-select [style.border-color]="'white'"  [(ngModel)]="statusfilter" name="divitionfilter" (selectionChange)="StatusFilterChange($event)" >
+                  <mat-option  [value]="0">-- ALL --</mat-option>
+                  @for (list of statuslist; track list ) {
+                    <mat-option [value]="list.value">{{list.display}}</mat-option>
+                  }
+                </mat-select>      
+                <mat-label>Status:</mat-label>
+              </mat-form-field> -->
+            </td>
+           <td   >
+<!--             <button mat-raised-button color="primary" style="margin-right: 20px;"  (click)="ExportJpg()"  >
+              <mat-icon svgIcon="iconJpg"></mat-icon>
+            </button>
+            <button mat-raised-button color="primary" style="margin-right: 20px; "  (click)="ExportExcel()" >
+              <mat-icon svgIcon="iconExcel"></mat-icon>
+            </button> -->
+            <mat-paginator [pageSizeOptions]="[ 20, 100,200,500]" aria-label="Select page of user point " (page)="paginatorChange($event)"  align="Start" ></mat-paginator>
+           </td>
+          </tr>
+          <tr  styles="width: 100%; height: 600px;   ">
+            <td style=" vertical-align: top ; "   colspan="2">
+              <div  style="height: 600px; width: 1400px; overflow: scroll; "  >
+                <table *ngIf="dataSource" mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;" matSort #tabledetail (matSortChange)="sortData($event)"  >
+                  @for (column of displayedColumns; track column) {
+                    <ng-container *ngIf="column!='id' && column!='name' && column!='division'" [matColumnDef]="column" >
+                      <th mat-header-cell *matHeaderCellDef  mat-sort-header > {{column}} </th>
+                      <td   mat-cell *matCellDef="let element"> 
+                        @if (element[column]) {
+                        <button mat-button [matMenuTriggerFor]="menu" (mouseenter)="getListIdeaNumber(element['id'],column)" >{{element[column] | number: '1.2-2'}}</button>
+                           <mat-menu #menu="matMenu" style="width: 300px;">
+                              @for (n of listideanumber; track n) {
+                            
+                                    <button mat-menu-item (click)="OpenIdeaDetail(n.value)">
+                                        {{n.display}}
+                                    </button>
+                                    
+                              }
+                                  </mat-menu>
+                        }
+                      </td>                     
+                    </ng-container>
+                    <ng-container  *ngIf="column=='id' || column=='name' || column=='division' " [matColumnDef]="column"  >
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header  > {{column}} </th>                      
+                      <td  mat-cell *matCellDef="let element"> {{element[column] }} </td>
+                    </ng-container>
+                  }
+                
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="height: 25px; border-right: solid 2px;"></tr>
+                </table>
+              </div>
+
+            </td>
+            
+          </tr>
+        </table>
+
+ 

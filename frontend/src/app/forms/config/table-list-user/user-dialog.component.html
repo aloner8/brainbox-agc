@@ -1,0 +1,207 @@
+
+
+<div class="confirm-form">
+    <div class="topdialog"><mat-icon class="material-symbols-outlined" (click)="onCloseClick()">close</mat-icon> </div> 
+ 
+            
+             <p style="font-size: larger; text-align: center;"  > User Information</p> 
+            <!-- <td><p   style="text-align: left;" >-{{data.SubCaption}} </p></td> -->
+     
+    
+    
+    <mat-dialog-content  >
+       
+        <form [formGroup]="UserForm" (ngSubmit)="onSubmit()">
+ 
+            <mat-grid-list cols="8" rowHeight="80px" gutterSize="10px">
+                
+                <mat-grid-tile
+                [colspan]="1"
+                [rowspan]="1">
+                <mat-form-field appearance="outline" style="width: 95%;"   >
+                    <mat-label>id</mat-label>
+                    <input matInput  placeholder="" style="width: 100%;"  formControlName="id"  id="id" name="id"  minlength="10"   >
+                     
+                  </mat-form-field>
+              </mat-grid-tile>
+        
+                  <mat-grid-tile
+                    [colspan]="3"
+                    [rowspan]="1">
+                    <mat-form-field appearance="outline" style="width: 95%;">
+                        <mat-label>username</mat-label>
+                        <input matInput  required placeholder="" style="width: 100%;"  formControlName="username"  id="username" name="username"  minlength="10" >
+                         
+                      </mat-form-field>
+                  </mat-grid-tile>
+        
+                  <mat-grid-tile
+                  [colspan]="4"
+                  [rowspan]="1">
+                  <mat-form-field appearance="outline" style="width: 95%;">
+                    <mat-label>name</mat-label>
+                    <input matInput  required placeholder="" style="width: 100%;"  formControlName="name"  id="name" name="name"  minlength="10" >
+                    
+                  </mat-form-field>
+                </mat-grid-tile>
+
+<!-- //row 2 -->
+
+
+  <mat-grid-tile
+  [colspan]="1"
+  [rowspan]="1">
+  <mat-form-field appearance="outline" style="width: 95%;">
+      <mat-label>initial</mat-label>
+      <input matInput  required placeholder="" style="width: 100%;"  formControlName="initial"  id="initial" name="initial"  minlength="10" >
+       
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 95%;">
+    <mat-label>user_id_code</mat-label>
+    <input matInput  required placeholder="" style="width: 100%;"  formControlName="user_id_code"  id="user_id_code" name="user_id_code"  minlength="10" >
+     
+  </mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="5"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 95%;">
+    <mat-label>e-mail</mat-label>
+    <input matInput   placeholder="" style="width: 100%;"  formControlName="email"  id="email" name="email"  minlength="10" >
+     
+  </mat-form-field>
+</mat-grid-tile>
+  <mat-grid-tile
+  [colspan]="3"
+  [rowspan]="1">
+ 
+    <mat-form-field  appearance="outline" >
+      <mat-select [style.border-color]="'white'"    [formControl]="myControl"    name="department_master_id" (selectionChange)="DivisionChange($event)" >
+        <mat-option>-- NONE --</mat-option>
+        @for (list of departmentlist; track list ) {
+          <mat-option [value]="list">{{list.display}}</mat-option>
+        }
+      </mat-select>      
+      <mat-label>Division</mat-label>
+    </mat-form-field>
+  
+</mat-grid-tile>
+
+   
+
+  <mat-grid-tile
+  [colspan]="2"
+  [rowspan]="1">
+  <mat-form-field appearance="outline" style="width: 95%;">
+    <mat-label>site</mat-label>
+    <input matInput  required placeholder="" style="width: 100%;"  formControlName="site"  id="site" name="site"  minlength="10" >
+    
+  </mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="3"
+[rowspan]="2"  >
+<ul style="list-style-type: none;padding: 20px; width: 100%;margin: 0px;">
+  <li>
+    <mat-checkbox style="color: black;" formControlName="isapprover"  id="isapprover" name="isapprover"  [checked]="UserForm.get('isapprover')?.value==1" (change)="CheckedChange('isapprover')" >is approver</mat-checkbox>
+  </li>
+  <li>
+    <mat-checkbox style="color: black;" formControlName="iscoordinator"  id="iscoordinator" name="iscoordinator"  [checked]="UserForm.get('iscoordinator')?.value==1" (change)="CheckedChange('iscoordinator')">is coordinator</mat-checkbox>
+  </li>
+  <li>
+    <mat-checkbox style="color: black;" formControlName="isadmin"  id="isapprover" name="isadmin"  [checked]="UserForm.get('isadmin')?.value==1" (change)="CheckedChange('isadmin')" >is admin</mat-checkbox>
+  </li>
+  <li>
+    <mat-checkbox style="color: black;" formControlName="active"  id="active" name="active"  [checked]="UserForm.get('active')?.value==1"  (change)="CheckedChange('active')" >is active</mat-checkbox>
+  </li>
+</ul>
+    
+   
+
+ 
+</mat-grid-tile>
+ 
+
+
+
+
+  <mat-grid-tile
+  [colspan]="2"
+  [rowspan]="1">
+  <mat-form-field appearance="outline" style="width: 95%;">
+    <mat-label>Create At</mat-label>
+    <input matInput  required placeholder="" style="width: 100%;"  formControlName="created_at"  id="created_at" name="created_at"  minlength="10" >
+    
+    
+  </mat-form-field>
+</mat-grid-tile>
+ 
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 95%;">
+  <mat-label>lastupdate</mat-label>  
+  <input matInput    placeholder="" style="width: 100%;"  formControlName="updated_at"  id="updated_at" name="updated_at"  minlength="10" >
+  
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="4"
+[rowspan]="1">
+
+    <mat-form-field  appearance="outline" style="width: 90%;" >
+      <mat-label>default Approver</mat-label>  
+      <input matInput  placeholder="" style="width: 100%;" [formControl]="ControlApprove_1" [matAutocomplete]="autoapprove1"    >   
+      <mat-autocomplete #autoapprove1="matAutocomplete" [displayWith]="displayFnMember" (optionSelected) ="ApproverChange($event)">
+        @for (option of filteredApprove_1   | async;  track option) {
+          <mat-option [value]="option">{{option.display}}</mat-option>
+        }
+        </mat-autocomplete>
+    </mat-form-field>
+
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="4"
+[rowspan]="1">
+
+    <mat-form-field  appearance="outline" style="width: 90%;">
+      <mat-label>default_coordinator</mat-label>  
+      <input matInput placeholder="" style="width: 100%;"  [formControl]="ControlCoordinator_1"   [matAutocomplete]="autocoordinator1">   
+      <mat-autocomplete #autocoordinator1="matAutocomplete" [displayWith]="displayFnMember" (optionSelected) ="coordinatorChange($event)">
+        @for (option of filteredCoordinator_1   | async;  track option) {
+          <mat-option [value]="option">{{option.display}}</mat-option>
+        }
+        </mat-autocomplete> 
+    </mat-form-field>
+
+
+</mat-grid-tile>
+ 
+
+
+            </mat-grid-list>
+        </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions style="text-align: center; width: 100%;"  align="center"> 
+        <button *ngIf="data.IsAdmin" mat-raised-button color="info" (click)="onEdit()" >Edit</button> 
+        <button *ngIf="data.IsAdmin" mat-raised-button color="primary" (click)="onConfirm()" >Save</button> 
+        <button  mat-raised-button color="primary" (click)="onCloseClick()" >Close</button> 
+
+    </mat-dialog-actions>
+
+</div>
+
+
+
+
+

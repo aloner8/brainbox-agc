@@ -1,0 +1,79 @@
+
+ 
+  <p>
+
+    
+        
+          <mat-toolbar>
+     
+            <mat-toolbar-row>
+           <button mat-icon-button  color="accent"  aria-label="Example icon-button with menu icon" (click)="drawer.toggle()" >
+            <mat-icon>menu</mat-icon>
+          </button>
+
+          <span>         
+            <img class="login-icon" src="../../assets/img/MEAN-Icon.png" alt="MEAN-Icon" style=" height: 70px; width: auto; " > </span>
+          <span  style="flex: 1 1 auto;" ></span>
+             <!-- <button  mat-raised-button color="primary" style="width: auto;height: auto;"   > -->
+              <mat-form-field appearance="fill" style="width:12em ; height: 100%; font-size:medium ;color: blue; " >
+           
+                <mat-select [(value)]="YearSelectValue"    name="listitem"  (selectionChange)="onYearSelect( $event)">  <!-- (selectionChange)="onYearSelect( $event)"  -->
+                  <mat-option *ngFor="let list of YearSelect" [value]="list.value">
+                    {{list.display}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            <!-- </button> -->
+          <!-- <button  mat-raised-button color="primary" style="width: auto; height: 100%;" (click)="GetAllProject()" >   <mat-icon>search</mat-icon>{{ USER_INFORMATION["fullname"]? USER_INFORMATION["fullname"]:USER_INFORMATION["User_id"]}} </button> -->
+
+          <button  mat-raised-button color="primary" style="width: auto; height: 100%;" (click)="openPage('UserInformation',null)" >   <mat-icon>account_circle</mat-icon>{{ USER_INFORMATION["fullname"]? USER_INFORMATION["fullname"]:USER_INFORMATION["User_id"]}} </button>
+     
+          <button  mat-raised-button color="warn" style="width: auto;height: 100%;"  (click)="LogOff()" >
+           
+            <mat-icon>exit_to_app</mat-icon>
+         </button>
+        </mat-toolbar-row>
+        </mat-toolbar>
+      
+    </p>
+    
+      <mat-drawer-container class="example-container" [hasBackdrop]="true" style="width: 100%; height:90%; overflow:inherit;" >
+          <mat-drawer #drawer id="drawer" [mode]="'over'" [opened]="drawer_opened" > 
+            <left-menu [ApplicationInfo] = "ApplicationInfo" [Parents] = "Pages"  [MenuInfo] = "MenuInfo"  [UserInfo] = "UserInfo"  (LeftMenuEvents) = "LeftMenuEvents($event)">
+          
+            </left-menu>
+    
+          </mat-drawer>
+        <mat-drawer-content>
+          <mat-tab-group [selectedIndex]="selected.value"
+               (selectedIndexChange)="selected.setValue($event)"
+               color="basic" 
+               backgroundColor="primary" 
+               style="height: 95%;" 
+               class="example-boundary"
+               >
+            <mat-tab *ngFor="let tab of ListPage; let index = index" [label]="tab"   style="height: 100%;margin-bottom: 5px;"  >
+              <ng-template mat-tab-label>            
+                {{tab.Caption}} {{tab.subCaption}}
+                <span  style="flex: 1 1 auto;" ></span>
+                <button mat-icon-button   color="warn"    (click) = "closeForm(index)" >
+                  <mat-icon>close</mat-icon>
+                </button> 
+              </ng-template>
+          
+                  <app-forms 
+                    [id] = "tab.id"
+                    [Pages] = "Pages"
+                    [currentScreenSize] = "currentScreenSize"
+                    (FormEvents) = "FormEvents($event)" >
+
+                  </app-forms> 
+              
+            </mat-tab>
+          </mat-tab-group>
+           
+
+        </mat-drawer-content>
+      </mat-drawer-container>
+    
+    

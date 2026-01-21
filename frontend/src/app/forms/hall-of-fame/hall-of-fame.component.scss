@@ -1,0 +1,82 @@
+
+
+.courses-panel {
+    max-width: 460px;
+    margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+h2 {
+  font-family: "Roboto";
+}
+
+.title {
+  text-align: center;
+  margin-right: 15px;
+  border-left: solid 2px;
+
+}
+mat-tab {
+  background: rgb(10,10,110);
+  background: linear-gradient(90deg, rgba(10,10,110,1) 0%, rgba(18,72,156,1) 12%, rgba(18,114,236,1) 31%, rgba(36,121,255,1) 61%);
+
+}
+mat-grid-tile{
+  position: absolute;
+  background-color: transparent; 
+  overflow: visible;
+  
+  
+}
+
+
+
+.lighton  {
+  position:relative ;
+  overflow: visible;   
+  width: 70%;
+  height:130%;
+  top: -10px;
+  background: radial-gradient(circle , rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.001) 60%);  
+  
+}
+.light{
+  top: -60px;
+  position:absolute ;  
+  
+}
+  .ranking {
+  position:absolute ;
+  width: 100%;
+  height: auto; 
+  background-color: transparent; 
+  overflow: hidden;
+  color: white;
+} 
+.rankingtotal {
+  position:absolute ;  
+  background-color:transparent;
+  overflow: visible;
+  color: white;
+  
+}
+
+.rankingtotal table  {
+  background-color:transparent;
+  text-align: center;
+ }
+
+ status-box  {
+  width: 200px;
+  height: auto;
+  color: black;
+  padding: 0px;
+  margin: 0px;
+}
+

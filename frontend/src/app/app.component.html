@@ -1,0 +1,22 @@
+ 
+
+   <ng-container *ngIf="!ConnectServerApi" >
+      <label>Not connect to server!.</label>
+    </ng-container>
+    
+    <ng-container *ngIf="ConnectServerApi" >
+      <ng-container *ngIf="Rewards" >
+<app-rewards ></app-rewards> 
+      </ng-container>
+      <ng-container *ngIf="!Rewards" >
+        <ng-container *ngIf="!UserAutherized" >
+          <app-login (LogingEvents)="LogingEvents($event)">
+              
+          </app-login>
+        </ng-container>
+        <ng-container *ngIf="UserAutherized" >
+          <app-pages-mat [Parent]="Me"  (PageEvents) = "PageEvents($event)"></app-pages-mat> 
+        </ng-container>
+      </ng-container>
+
+    </ng-container>

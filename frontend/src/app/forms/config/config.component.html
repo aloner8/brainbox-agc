@@ -1,0 +1,108 @@
+<mat-tab-group mat-stretch-tabs="false" dynamicHeight  fitInkBarToContent   [(selectedIndex)]="selectedIndex" (selectedIndexChange)="selectedIndexChange($event)"  id="ideatabheader">
+    <mat-tab mat-align-tabs="start" >    
+      <ng-template mat-tab-label >
+        <span style="width: 120px; text-align: left; " >Configs</span>
+    </ng-template>     
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <mat-grid-list [cols]="cols" rowHeight="180px" style="width: 90%;height: 100%;padding: 5px;  vertical-align: middle; " gutterSize="50px"  >
+        <mat-grid-tile>
+          <button mat-button  [style.backgroundImage] ="'url(' + BaseHref + 'assets/menu/config-level.png)'"  style=" background-position: center;background-repeat: no-repeat;" (click)="SelectMenu('Level')" ></button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-button [style.backgroundImage] ="'url(' + BaseHref + 'assets/menu/config-division.png)'" style=" background-position: center;background-repeat: no-repeat;" (click)="SelectMenu('Division')" ></button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-button  [style.backgroundImage] ="'url(' + BaseHref + 'assets/menu/config-category.png)'" style=" background-position: center;background-repeat: no-repeat; " (click)="SelectMenu('Category')" ></button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-button  [style.backgroundImage] ="'url(' + BaseHref + 'assets/menu/config-status.png)'" style=" background-position: center;background-repeat: no-repeat;" (click)="SelectMenu('Idea Status')" ></button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-button  [style.backgroundImage] ="'url(' + BaseHref + 'assets/menu/config-subcategory.png)'" style=" background-position: center; background-size: cover;background-repeat: no-repeat;" (click)="SelectMenu('Sub Category')" ></button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-button  [style.backgroundImage] ="'url(' + BaseHref + 'assets/menu/config-rewards.png)'" style=" background-position: center;background-repeat: no-repeat;" (click)="SelectMenu('Rewards')" ></button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-button [style.backgroundImage] ="'url(' + BaseHref + 'assets/menu/config-user.png)'" style=" background-position: center;background-repeat: no-repeat;" (click)="SelectMenu('Users')" ></button>
+        </mat-grid-tile>
+        <mat-grid-tile> 
+          <button mat-button [style.backgroundImage] ="'url(' + BaseHref + 'assets/menu/config-target-setting.png)'" style="background-position: center; background-size: cover; background-repeat: no-repeat;" (click)="SelectMenu('Target Setting')" ></button>
+      </mat-grid-tile>
+      <mat-grid-tile> 
+        <button mat-button  [style.backgroundImage] ="'url(' + BaseHref + 'assets/menu/config-Hall-of-fame.png)'" style=" background-position: center;  background-size: contain;background-repeat: no-repeat;" (click)="SelectMenu('Upload Hall Of Fame')" ></button>
+    </mat-grid-tile>
+    <mat-grid-tile> 
+      <button mat-button  [style.backgroundImage] ="'url(' + BaseHref + 'assets/menu/config-app-config.png)'" style=" background-position: center;background-repeat: no-repeat;" (click)="SelectMenu('App Config')" ></button>
+  </mat-grid-tile>
+      </mat-grid-list>
+    </mat-tab>
+    <mat-tab [label]="currentmenulabel"  style=" vertical-align: left;overflow: scroll; width: 100%;"   > 
+      <ng-template mat-tab-label >
+        <span style="width: 200px; text-align: left;" >{{currentmenulabel}}</span>
+      </ng-template>
+      <ng-container *ngIf="currentmenulabel=='Users'" [style.width.%]="90" >
+          <table-list-users [IsAdmin]="UserInfo.isadmin==1"  [Parent]="Me"   >
+            
+          </table-list-users>
+      </ng-container>
+      <ng-container *ngIf="currentmenulabel=='Level'" [style.width.%]="100">
+        <table-list-levels  [IsAdmin]="UserInfo.isadmin==1">
+          
+        </table-list-levels>
+    </ng-container>
+    <ng-container *ngIf="currentmenulabel=='Division'" [style.width.%]="100">
+      <table-list-divisions  [IsAdmin]="UserInfo.isadmin==1">
+        
+      </table-list-divisions>
+    </ng-container>
+
+    <ng-container *ngIf="currentmenulabel=='Category'" [style.width.%]="100">
+      <table-list-category  [IsAdmin]="UserInfo.isadmin==1">
+        
+      </table-list-category>
+    </ng-container>
+
+    <ng-container *ngIf="currentmenulabel=='Idea Status'" [style.width.%]="100">
+      <table-list-idea-status [IsAdmin]="UserInfo.isadmin==1">
+        
+      </table-list-idea-status>
+    </ng-container>
+
+    <ng-container *ngIf="currentmenulabel=='Sub Category'" [style.width.%]="100">
+      <table-list-sub-category  [IsAdmin]="UserInfo.isadmin==1">
+        
+      </table-list-sub-category>
+    </ng-container>
+    
+    <ng-container *ngIf="currentmenulabel=='Rewards'" [style.width.%]="100">
+      <table-list-rewards  [IsAdmin]="UserInfo.isadmin==1">
+        
+      </table-list-rewards>
+    </ng-container>
+    <ng-container *ngIf="currentmenulabel=='Target Setting'" [style.width.%]="100">
+      <target-setting  [IsAdmin]="UserInfo.isadmin==1">
+        
+      </target-setting>
+    </ng-container>
+    <ng-container *ngIf="currentmenulabel=='Upload Hall Of Fame'" [style.width.%]="100">
+      <upload-hall-of-fame  [IsAdmin]="UserInfo.isadmin==1">
+        
+      </upload-hall-of-fame>
+    </ng-container>
+    <ng-container *ngIf="currentmenulabel=='App Config'" [style.width.%]="100">
+      <table-list-app-config  [IsAdmin]="UserInfo.isadmin==1">
+        
+      </table-list-app-config>
+    </ng-container>
+        
+    
+
+    </mat-tab>
+      
+  </mat-tab-group>
+

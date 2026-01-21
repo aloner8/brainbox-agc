@@ -1,0 +1,63 @@
+mat-form-field {
+    position: relative;
+    background-color: gainsboro;
+    top: 3px;
+}
+
+mat-form-field  {
+    position: relative;
+    color: #034a91;
+    top: 15px;
+    padding: 0px;
+   
+    height: auto;
+    background-color:transparent;
+     
+}
+div.mdc-notched-outline{
+    // background-image: url('../../../../assets/img/textfield.svg') !important;
+    box-shadow:   3px 3px red inset ,
+    -1em 0 0.4em olive  !important; 
+}
+mat-grid-tile {
+    
+    border-radius: 10px;
+    background-color: rgba(236, 241, 251, 0.837);
+    box-shadow:   5px -5px rgba(51, 64, 79, 0.9) !important; 
+   
+}    
+
+mat-form-field input {
+    position: relative;
+    color: #034a91;
+    top: 0px;
+    padding: 0px;
+    border-radius: 5px;
+}
+mat-form-field label {
+    position: relative;
+    color: #034a91;
+    top: 0px;
+}
+.bgButtonCommand:hover {
+    // background-color: rgba($color: #42e229, $alpha: 0.5);
+     opacity: 1;
+      top: 1px;
+   }
+
+ 
+ .bgButtonCommand {  
+        opacity: 0.8;
+        top: 1px;
+//     width: 100%;    
+//     height:100%;    
+//   background-repeat: no-repeat;
+//   background-size: auto;
+  // display:inline-block;
+   
+ 
+}
+
+td {
+    margin: 2px;
+}

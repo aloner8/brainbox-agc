@@ -1,0 +1,14 @@
+mat-selection-list {
+  min-height: 400px;
+  min-width: 600px;
+}
+
+mat-list-option {
+  height: auto;
+}
+h2 {
+  width: 100%;
+  text-align: center;
+  background-color: rgb(13, 13, 194);
+  color: white;
+}

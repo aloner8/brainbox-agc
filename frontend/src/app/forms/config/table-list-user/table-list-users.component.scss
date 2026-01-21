@@ -1,0 +1,131 @@
+table  {
+  background-color: transparent;
+}
+
+
+.mat-elevation-z8 {
+  border-radius: 40px;
+  padding: 10px;
+  color: white;
+  background-image: url('../../../../assets/img/table-box.svg');
+  background-repeat: no-repeat;
+ overflow: visible;
+  background-size:cover;
+}
+div.around {
+  position: relative;
+  overflow: scroll;   
+  top: 10px;
+}
+
+a.runnumber {
+  font-size: large;
+  font-weight: bolder;
+  cursor:pointer ;
+}
+a.runnumber:hover {
+  font-size: large;
+  font-weight: bolder;
+  cursor:pointer ;
+  background-color: rgb(11, 61, 225);
+}
+
+#tabledetail.mat-mdc-cell  {
+  border-color: white;
+  overflow-y: scroll;
+}
+#tableImport.mat-mdc-cell  {
+  border-color: white;
+  overflow-y: scroll;
+
+}
+ #tableImport  {
+  width: 900px;
+  
+}
+ #divmport {
+width: 900px;
+ }
+label.mdc-label {
+  color: white;
+}
+
+.mat-date-range-input-separator{
+  color: white !important;
+}
+th{
+  border-bottom: solid white ;
+  border-top: solid white ;
+  position: sticky;
+  background-color: blue;
+}
+
+mat-table-row-item-outline-color {
+  border-color: white;
+}
+mat-mdc-cell {
+  border-color: white;
+}
+mat-cell {
+  border-color: white;
+}
+mat-form-field  {
+ position: relative;
+  background-color: rgba(9, 24, 90, 0.2);
+  color: white;
+  border-color: white;
+  margin-right: 10px;
+}
+
+
+
+ input {
+ 
+  background-color:transparent;
+  color: white;
+
+  
+}
+.mdc-notched-outline {
+  border-color: white;
+}
+.mdc-notched-outline--upgraded{
+  border-color: white;
+} 
+.ng-star-inserted{
+  border-color: white;
+}
+.cdk-overlay-container{
+  border-color: white;
+}
+.placeholder {
+  background-color:transparent;
+  color: white;
+}
+mat-label {
+  background-color:transparent;
+  color: white;
+}
+mat-select{
+  background-color:transparent;
+  color: white;
+}
+mat-paginator{
+  background-color: rgba(9, 24, 90, 0.2);
+  color: white;
+}
+td  {
+  color: white;
+}
+th  {
+  color: white;
+}
+/* Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+}
+/* Font color */
+input.mat-input-element {
+  color: white;
+}
+

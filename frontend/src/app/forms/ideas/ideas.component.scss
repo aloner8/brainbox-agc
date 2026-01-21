@@ -1,0 +1,119 @@
+
+mat-tab {
+  height:88vh ;
+  overflow:visible;
+}
+.mat-mdc-tab-header {
+  overflow: visible; 
+
+
+}
+#mat-tab-label-0-0 {
+  border-color:red !important;
+  border: solid 3px !important;
+}
+.mdc-tab__content {
+  font-size: xx-large;
+  height:100% ;
+  overflow:visible;
+}
+.mdc-tab__text-label{
+  font-size: xx-large;
+}
+
+.mat-mdc-tab-body-content {
+  background-color: aliceblue;
+  overflow: visible;
+}
+
+mat-tab-group{
+  height:88vh ;
+  overflow:visible;
+}
+.topdetail {
+  background-color: blue;
+  color: white;
+}
+
+.mat-mdc-tab-body  .mat-mdc-tab-body-active {
+  overflow: visible !important;
+  
+}
+.savedraft {
+  background-image: url('../../../assets/img/save-draft-button.svg');
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+td.bgButtonCommand:hover {
+  background-color: rgba($color: #42e229, $alpha: 0.5);
+  
+}
+.bgButtonCommand:hover {
+ // background-color: rgba($color: #42e229, $alpha: 0.5);
+  opacity: 0.8;
+}
+
+/* mat-tab-header.mat-mdc-tab-header {
+  width:700px !important ;
+  overflow: visible;
+  font-size: larger;
+}
+
+mat-tab-header.mat-mdc-tab-header {
+  width:900px !important ;
+  overflow: visible;
+  font-size: larger;
+}
+div.mat-mdc-tab-header {
+  width:800px !important ;
+  overflow: visible;
+  font-size: larger;
+} */
+
+div.mat-mdc-tab-labels{
+  width: 800px;
+}
+
+right-command {
+  position: fixed;
+  right: 20px;
+  width: 150px;
+  height: 200px;
+  z-index: 21;
+}
+
+  div.toolbar {
+    position: fixed;
+    right: 30px;
+    top :250px;
+    height: 200px;
+    width: 200px;
+    color: white;
+    z-index: 21;   
+    border-radius: 10px;
+    background-color: #11349581;
+    margin:  15px;
+    box-shadow: 5px 5px 10px 5px rgba(2, 29, 72, .9) ;
+  }
+
+    div.toolbar-hide {
+    position: fixed;
+    right: 30px;
+    top :300px;
+    height: 50px;
+    width: 50px;
+    color: white;
+    z-index: 21;   
+    border-radius: 10px;
+    background-color: #11349581;
+    margin:  15px;
+    box-shadow: 5px 5px 10px 5px rgba(2, 29, 72, .9) ;
+  }
+  
+  drawer_button {
+    position: relative;
+    left: -50px;
+    top: 150px;
+    width: 50px;
+    height:  50px;
+  }

@@ -1,0 +1,31 @@
+
+div.edit-course-form {
+  min-width: 300px;
+  background-color: #113595;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+h2 {
+  color:red  !important;
+}
+mat-dialog-title{
+  color: red  !important;
+}
+label.mdc-label {
+  color: red;
+  font-weight: bold;
+}
+label {
+  color: red;
+  font-weight: bold;
+}

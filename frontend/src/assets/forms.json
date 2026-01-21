@@ -1,0 +1,61 @@
+[
+    {
+        "id":1,
+        "name":"typicalform",
+        "Caption":"typicalform",
+        "layout" :{
+            "maxcol":3,
+            "rowWidth":2
+        },
+        "tiles":[
+            {"style":{},"colspan":1,"rowspan":1} 
+            ,{"style":{},"colspan":1,"rowspan":1}
+            ,{"style":{},"colspan":1,"rowspan":1}
+            ,{"style":{},"colspan":1,"rowspan":1}
+            ,{"style":{},"colspan":1,"rowspan":1}
+            ,{"style":{},"colspan":1,"rowspan":1}
+            ,{"style":{},"colspan":1,"rowspan":1}
+        ],
+        "Controls":[
+            {"index":0,"type": 1,"name":"input1","datafield":"" ,"Properties":{"appearance":"outline" , "inputtype":"text" } }
+            ,{"index":1,"type": 1,"name":"input2","datafield":"" ,"Properties":{"appearance":"fill", "inputtype":"datetime-local"}}
+            ,{"index":2,"type": 1,"name":"input3","datafield":"" ,"Properties":{"appearance":"outline", "inputtype":"url"}}
+            ,{"index":3,"type": 1,"name":"input4","datafield":"" ,"Properties":{"appearance":"fill", "inputtype":"search"}}
+            ,{"index":4,"type": 1,"name":"input5","datafield":"","Properties":{"appearance":"outline", "inputtype":"password"} }
+            ,{"index":5,"type": 1,"name":"input6","datafield":"","Properties":{"appearance":"fill", "inputtype":"number"} }
+            ,{"index":6,"type": 1,"name":"input7","datafield":"" ,"Properties":{"appearance":"outline", "inputtype":"date"}}
+            ,{"index":7,"type": 1,"name":"input8","datafield":"" ,"Properties":{"appearance":"fill", "inputtype":"color"}}
+        ]
+       
+    },
+    {
+        "id":2,
+        "name":"OneTableform",
+        "Caption":"OneTableform",
+        "layout" :{            
+            "maxcol":1,
+            "rowWidth":100
+        },
+        "tiles":[],
+        "Controls":[
+            {"index":0,"type": 10,"name":"table1","collectionName":"" }
+            
+        ]
+
+    },
+    {
+        "id":3,
+        "name":"Gellaryform",
+        "Caption":"Gellaryform",
+        "layout" :{
+            "maxcol":1,
+            "rowWidth":25
+        },
+        "tiles":[],
+        "Controls":[
+            {"index":0,"type": 10,"name":"table1","collectionName":"" }
+            
+        ]
+
+    }
+]

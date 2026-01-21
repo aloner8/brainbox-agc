@@ -1,0 +1,50 @@
+ <div class="main">
+    <img mat-card-image [src] ="BaseHref + 'assets/img/AGC-VINYTHAI-Logo.png'">
+        <br>
+        <img mat-card-image [src] ="BaseHref + 'assets/menu/divider.png'">
+        <!-- <mat-divider ></mat-divider> -->
+        <!-- <mat-nav-list (click)="sidenav.close()"> -->       
+            <mat-nav-list >
+              
+            <a mat-list-item  (click) ="SelectMenu('home')" [ngClass]="getisactiveMenuText('home') ? 'is-active' : ''"> 
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/Home.svg'"  *ngIf="getNotactiveMenu('home')" >
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/HomeSelect.svg'"  *ngIf="getisactiveMenuText('home')" >
+            </a>
+            <a   mat-list-item  (click) ="SelectMenu('ideas')" [ngClass]="getisactiveMenuText('ideas') ? 'is-active' : ''">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/idea.svg'"  *ngIf="getNotactiveMenu('ideas')">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/ideaSelect.svg'"  *ngIf="getisactiveMenuText('ideas')">
+            </a>
+
+            <a   mat-list-item  (click) ="SelectMenu('dashboard')" [ngClass]="getisactiveMenuText('dashboard') ? 'is-active' : ''">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/Dashboard.svg'" *ngIf="getNotactiveMenu('dashboard')">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/DashboardSelect.svg'" *ngIf="getisactiveMenuText('dashboard')">
+            </a>
+
+            <a mat-list-item  (click) ="SelectMenu('reports')" [ngClass]="getisactiveMenuText('reports') ? 'is-active' : ''">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/Report.svg'" *ngIf="getNotactiveMenu('reports')" [style.paddingTop.px]="10" >
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/ReportSelect.svg'" *ngIf="getisactiveMenuText('reports')" [style.paddingTop.px]="10">
+            </a>
+
+            <a mat-list-item  (click) ="SelectMenu('profile')" [ngClass]="getisactiveMenuText('profile') ? 'is-active' : ''">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/Profile.svg'" *ngIf="getNotactiveMenu('profile')" [style.paddingTop.px]="10">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/ProfileSelect.svg'" *ngIf="getisactiveMenuText('profile')" [style.paddingTop.px]="10">
+            </a>
+
+            <a mat-list-item  (click) ="SelectMenu('config')" [ngClass]="getisactiveMenuText('config') ? 'is-active' : ''">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/config.svg'" *ngIf="getNotactiveMenu('config')" [style.paddingTop.px]="10">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/configSelect.svg'" *ngIf="getisactiveMenuText('config')" [style.paddingTop.px]="10">
+            </a>
+
+            <a mat-list-item (click) ="SelectMenu('manual')" [ngClass]="getisactiveMenuText('manual') ? 'is-active' : ''">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/manual.svg'" *ngIf="getNotactiveMenu('manual')" [style.paddingTop.px]="10">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/manualSelect.svg'" *ngIf="getisactiveMenuText('manual')" [style.paddingTop.px]="10">
+            </a>
+            <a mat-list-item (click) ="SelectMenu('hall-of-fame')" [ngClass]="getisactiveMenuText('hall-of-fame') ? 'is-active' : ''">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/hallOfFame.svg'" *ngIf="getNotactiveMenu('hall-of-fame')" [style.paddingTop.px]="10">
+                <img mat-card-image [src] ="BaseHref + 'assets/menu/hallOfFameSelect.svg'" *ngIf="getisactiveMenuText('hall-of-fame')" [style.paddingTop.px]="10">
+            </a>
+            <!-- <label>{{routerLinkActive.toString() }}</label> -->
+        </mat-nav-list>
+ </div>
+    
+       

@@ -1,0 +1,25 @@
+
+
+<h2 mat-dialog-title>Reset password</h2>
+<mat-dialog-content>
+  <p>The system will send an OTP code to the specified email address.</p>
+  <mat-form-field>
+    <mat-label>username</mat-label>
+    <input matInput [(ngModel)]="data.name" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>email</mat-label>
+    <input matInput [(ngModel)]="data.email" >
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end" >
+  <button mat-raised-button color="warn"(click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button color="primary" (click)="onSendMailClick()" cdkFocusInitial>Send OTP</button>
+</mat-dialog-actions>
+
+
+ 
+
+
+
+

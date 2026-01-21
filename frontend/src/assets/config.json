@@ -1,0 +1,43 @@
+[
+  {
+    "standAlone": true,
+    "pathdownload" : "/download/",
+    "rootpath" : "../home/aloner/conf/web/apibudget.lru.ac.th",
+    "localformpath" : "../assets/forms/",
+    "urldownload":"https://172.18.227.103/", 
+    "urlupload":"http://apibudget.lru.ac.th:28443/db/uploadfile/",
+    "attechfolder":"storage/documentAttachment/",
+     "urldb":"mongodb://username:password@apibudget.lru.ac.th:27017/admin",
+     "serverdb":"apibudget.lru.ac.th",
+     "serverapi":"apibudget.lru.ac.th",
+     "urldbapp":"mongodb://username:password@apibudget.lru.ac.th:27017/server",
+     "DBName":"b4ed9a2f6a5e952ec69154de0b8174fc9e8e6298701a20ce77fddde253b60c52",
+     "httpPort":"27080",
+     "httpsPort":"27000",
+     "rootpoint":"https://172.18.227.103:28180",
+    
+     "apikey":"1fd35ceec2d60b3af6967628ceb53dc81a89777a5cedd5f3a5fc3a29240af209",
+     "appprefix":"LruBudget",
+     "BaseHref": "/uat/"
+  },
+  {
+    "standAlone": true,
+    "pathdownload" : "/download/",
+    "rootpath" : "../home/aloner/conf/web/apibudget.lru.ac.th",
+    "localformpath" : "../assets/forms/",
+    "urldownload":"http://localhost/", 
+    "attechfolder":"storage/documentAttachment/",
+    "urlupload":"https://localhost:28180/db/uploadfile/",
+     "urldb":"mongodb://username:password@apibudget.lru.ac.th:27017/admin",
+     "serverdb":"apibudget.lru.ac.th",
+     "serverapi":"apibudget.lru.ac.th",
+     "urldbapp":"mongodb://username:password@apibudget.lru.ac.th:27017/server",
+     "DBName":"b4ed9a2f6a5e952ec69154de0b8174fc9e8e6298701a20ce77fddde253b60c52",
+     "httpPort":"3000",
+     "httpsPort":"3000",
+     "rootpoint":"https://api.alonersoft.com:28143",
+     "apikey":"1fd35ceec2d60b3af6967628ceb53dc81a89777a5cedd5f3a5fc3a29240af209",
+     "appprefix":"LruBudget",
+     "BaseHref": "/uat/"
+  }
+]

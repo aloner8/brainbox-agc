@@ -1,0 +1,182 @@
+div.bg_form {
+  height: 65vh !important;
+  
+  overflow-y: scroll;
+  background-color: white;
+}
+/* mat-form-field {
+    position: relative;
+    background-color: gainsboro;
+    top: 3px;
+    border-radius: 5px;
+} */
+
+mat-form-field  {
+    position: relative;
+     background-color: rgb(235, 235, 241);
+    color: #034a91;
+    top: 5px;
+    padding: 0px;
+    width: 100%;
+    height: 80%;
+     border-radius: 15px;
+    
+     
+}
+div.mdc-notched-outline{
+    // background-image: url('../../../../assets/img/textfield.svg') !important;
+    box-shadow:   3px 3px red inset ,
+    -1em 0 0.4em olive  !important; 
+}
+mat-grid-tile {
+    position: absolute;
+    //border-radius: 10px;
+    background-color:white;
+   // box-shadow:   5px -5px rgba(51, 64, 79, 0.9) !important; 
+   text-align: start;
+    
+}    
+
+mat-form-field input {
+    position: relative;
+   
+    color: black;
+    top: 0px;
+    padding: 0px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: large;
+    border-width: 2px !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+ 
+  stroke-width: 3px !important;
+}
+.mdc-text-field--disabled .mdc-text-field__input {
+ border-width: 3px !important;
+}
+.mat-mdc-form-field.ng-touched.ng-invalid 
+.mdc-notched-outline__leading,
+.mat-mdc-form-field.ng-touched.ng-invalid 
+.mdc-notched-outline__notch,
+.mat-mdc-form-field.ng-touched.ng-invalid 
+.mdc-notched-outline__trailing {
+  border-width: 3px !important;
+  border-color: #d32f2f ; /* error red */
+}
+
+mat-form-field label {
+    position: relative;
+    color:blue;
+    top: 0px;
+}
+.mdc-floating-label .mat-mdc-floating-label  .mdc-floating-label--float-above {
+    color:blue !important;
+    font-weight: bold !important;
+    font-size: large !important;
+}
+mat-label {
+    color:blue !important;
+    font-weight: bold !important;
+    font-size: large !important;
+}
+textarea {
+   // color:black !important;
+    font-weight: bold !important;
+    font-size: large !important;
+}
+.mat-button-toggle .mat-button-toggle-appearance-standard{
+    height: 40px !important;
+}
+
+mat-button-toggle-group {
+    height: 50px !important;
+}
+
+section {
+    display: table;
+  }
+  
+  .process-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 200px;
+  }
+  
+  .process-button-row {
+    display: table-cell;
+    max-width: 90%;
+    width: 80%;
+  }
+  
+  .process-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .process-flex-container {
+    display: flex;
+    justify-content: right;
+    flex-wrap: wrap;
+  }
+.process-button-container {    
+    width: auto;
+  }
+  div.process-button-container button {
+    top: -15px;
+  }
+
+  div.process-button-container mat-label {
+    left: -30px;
+  }
+  .partner-button-row {
+    display: table-cell;
+    max-width: 50%;
+    width: 50%;
+    top: -30px;
+  }
+
+  div.partner-button-container button {
+    top: -15px;
+  }
+  
+  .partner-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .partner-flex-container {
+    display: flex;
+    justify-content: right;
+    flex-wrap: wrap;
+  }
+.partner-button-container {    
+    width: auto;
+  }
+  table.statedetail {
+    position: relative;
+    text-align: start;
+    top: 5px;
+    overflow: scroll;
+    height: auto }
+  table.statedetail td{
+    border: solid blue ;
+    border-width: 1px;
+  }
+    table.pointdetail {
+    position: relative;
+    text-align: start;
+    top: 5px;
+    overflow: scroll;
+    height: auto }
+  table.pointdetail td{
+    border: solid blue ;
+    border-width: 1px;
+  }
+
+  th {
+    position: sticky;
+  }
+  .footer {
+    height: 80px;
+    bottom: 0;
+  }

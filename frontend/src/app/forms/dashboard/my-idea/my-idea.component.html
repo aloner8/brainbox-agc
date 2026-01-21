@@ -1,0 +1,80 @@
+
+
+<mat-grid-list [cols]="cols" rowHeight="200px" >
+  
+    <mat-grid-tile  [colspan]="1"   [rowspan]="2" (mouseover)="lightOpend($event,true)" (mouseleave)="lightOpend($event,false)" > 
+      <p class="lighton"  *ngIf="lightimg==true"   ></p>
+      <img mat-card-image class="light" *ngIf="lightimg==true" [src] ="BaseHref + 'assets/img/light-bulb-on.png'"  style="width: auto;height: 80%;"   >
+      <img mat-card-image class="light" *ngIf="lightimg!=true" [src] ="BaseHref + 'assets/img/light-bulb-off.png'"  style="width: auto;height: 80%;  "   >
+      <label style="color: white;position: absolute;top:55%;font-size: x-small;" >  Click Here For </label>      
+      <label style="color: white;position: absolute;top:60%;font-size: x-small;" > Create New Ideas!</label>
+      <img mat-card-image class="light" *ngIf="lightimg==true" [src] ="BaseHref + 'assets/img/NewIdeas.png'"  style="width: auto;height: 50px; top:50% ;cursor:pointer ;"   (click)="OpenNewIdeas()"  >
+    </mat-grid-tile>
+    <mat-grid-tile     [colspan]="1"   [rowspan]="2"  > 
+
+        <div class="ranking"   style=" top:20% ">            
+              <p [style.margin.px]="1"  [style.fontSize] = "WelcomelabelfontSize">Welcome!</p>
+              <p [style.margin.px]="1" [style.fontSize] = "UserNamelabelfontSize">{{UserInfo.name}}</p>         
+              <ranking  style="width: 100%;height: auto;" [Size]="RankingSize"  [Parent]="HomePage" [userlevel]="UserInfo.my_level" ></ranking> 
+        </div>
+        <div class="rankingtotal" style="bottom:60px; right: 20px;  width: 80%;  " >            
+          <table >
+            <tr [style.fontSize] = "totallabel" >
+              <td style=" width: 33%;">Total point</td>
+              <td rowspan="3" [style.backgroundColor]="'white'" ></td>
+              <td >Own Ideas</td>
+              <td rowspan="3" [style.backgroundColor]="'white'" ></td>
+              <td style=" width: 40%;" >Participate Ideas</td>
+            </tr>
+            <tr  [style.fontSize] = "totalNumber" >
+              <td>{{UserInfo.my_level.my_point}}</td>
+              <td  >{{UserInfo.own_ideas}}</td>
+              <td  > {{UserInfo.my_participate}}</td>
+            </tr>
+            <tr [style.fontSize] = "totallabel">
+              <td>Point(s)/Year</td>
+              <td>Idea(s)</td>
+              <td >Idea(s)</td>
+            </tr>
+          </table>
+         </div>
+
+    </mat-grid-tile>
+    <mat-grid-tile [style.borderLeft]="'solid 3px'"  [style.borderColor]="'white'"   [colspan]="1"   [rowspan]="2"  >  
+      <p class="block toolbar"></p>
+      <br>
+      <table class="score">
+        <tr [style.fontSize] = '20'   [style.color] = "'white'" >
+          <td  colspan="2"><img  [src] ="BaseHref + 'assets/menu/linedivider.svg'" width="100%"></td>          
+        </tr>
+        
+        <tr>
+          <td><status-box [Value] = "getScoreByidStatus(2)" [Caption] = "'Draft'" style="width: 100%;height: auto;" [Size]="RankingSize"  [Parent]="HomePage" ></status-box></td>
+          <td><status-box [Value] = "getScoreByidStatus(4)" [Caption] = "'Wait'" style="width: 100%;height: auto;" [Size]="RankingSize"  [Parent]="HomePage" ></status-box></td>
+        </tr>
+        <tr>
+          <td><status-box [Value] = "getScoreByidStatus(5)" [Caption] = "'Approve'" style="width: 100%;height: auto;" [Size]="RankingSize"  [Parent]="HomePage" ></status-box></td>
+          <td><status-box [Value] = "getScoreByidStatus(8)" [Caption] = "'Not Applied'" style="width: 100%;height: auto;" [Size]="RankingSize"  [Parent]="HomePage" ></status-box></td>
+        </tr>
+        <tr>
+          <td><status-box [Value] = "getScoreByidStatus(6)" [Caption] = "'Ask more'" style="width: 100%;height: auto;" [Size]="RankingSize"  [Parent]="HomePage" ></status-box></td>
+          <td><status-box [Value] = "getScoreByidStatus(9)" [Caption] = "'Defend'" style="width: 100%;height: auto;" [Size]="RankingSize"  [Parent]="HomePage" ></status-box></td>
+        </tr>
+        <tr>
+          <td><status-box [Value] = "getScoreByidStatus(10)" [Caption] = "'Applied'" style="width: 100%;height: auto;" [Size]="RankingSize"  [Parent]="HomePage" ></status-box></td>
+          <td></td>
+        </tr>
+      </table>
+      
+    </mat-grid-tile>
+    <mat-grid-tile    [colspan]="cols"   [rowspan]="myIdeasRowSpan"  class="myIdeasRow" > 
+      <table-my-ideas style="width: 100%;margin-left: 0px; top:-100px;height: 100%;"   >
+
+      </table-my-ideas> 
+    </mat-grid-tile>
+   
+ 
+</mat-grid-list>
+ 
+ 
+

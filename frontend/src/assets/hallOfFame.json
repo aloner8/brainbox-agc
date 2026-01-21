@@ -1,0 +1,36 @@
+
+    {
+        "Manufacturing Excellence Award ":[
+          {"name":"1st Winner","max":1,"idea_number":"","idea_title":""},
+          {"name":"2nd Winner","max":1,"idea_number":"","idea_title":""},
+          {"name":"3rd Winner","max":1,"idea_number":"","idea_title":""}
+          ,
+          {"name":"Admire Winner","max":1,"idea_number":"","idea_title":""}
+          ,
+          {"name":"Admire Winner","max":1,"idea_number":"","idea_title":""}
+          ,
+          {"name":"Admire Winner","max":1,"idea_number":"","idea_title":""}
+        ],
+                "Service and Office Excellence Award":[
+          {"name":"1st Winner","max":1,"idea_number":"","idea_title":""},
+          {"name":"2nd Winner","max":1,"idea_number":"","idea_title":""},
+          {"name":"3rd Winner","max":1,"idea_number":"","idea_title":""}
+          ,
+          {"name":"Admire Winner","max":1,"idea_number":"","idea_title":""}
+          ,
+          {"name":"Admire Winner","max":1,"idea_number":"","idea_title":""}
+          ,
+          {"name":"Admire Winner","max":1,"idea_number":"","idea_title":""}
+        ],                
+        "AGC Chemicals President Award":[
+          {"name":"CEO Award","max":1,"idea_number":"","idea_title":""},
+          {"name":"Gold Award","max":1,"idea_number":"","idea_title":""},
+          {"name":"Silver Award","max":1,"idea_number":"","idea_title":""}
+          ,
+          {"name":"Bronze Award","max":1,"idea_number":"","idea_title":""}
+          ,
+          {"name":"Special Award","max":1,"idea_number":"","idea_title":""}
+         
+        ]
+
+    }

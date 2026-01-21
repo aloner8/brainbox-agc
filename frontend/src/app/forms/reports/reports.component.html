@@ -1,0 +1,43 @@
+ 
+ <mat-tab-group  *ngIf="departmentlist"  dynamicHeight  fitInkBarToContent  mat-stretch-tabs="true"   [(selectedIndex)]="selectedIndex" (selectedTabChange)="selectedIndexChange($event)" >
+
+    <mat-tab label="Total Ideas & Ideas/Person" style="background-image: url('../../../assets/img/table-box.svg');"> 
+      <cus-total-person-chart *ngIf="selectedIndex==0"  [Parent]="Me"  [departmentlist]="departmentlist" [statuslist]="statuslist"  (SendEvents)="ChildEvent($event)"  >
+
+      </cus-total-person-chart>  
+    </mat-tab>
+    <mat-tab label="Individual Records"> 
+       
+      <cus-individual-records [Parent]="Me"  *ngIf="selectedIndex==1" [departmentlist]="departmentlist" [statuslist]="statuslist"  (SendEvents)="ChildEvent($event)"  >
+
+      </cus-individual-records>
+    </mat-tab>
+    <mat-tab label="Cost Saving by Division"> 
+      <cus-cost-saving-chart  [Parent]="Me"  *ngIf="selectedIndex==2"  [departmentlist]="departmentlist" [statuslist]="statuslist"  (SendEvents)="ChildEvent($event)"  >
+
+      </cus-cost-saving-chart>
+     </mat-tab>
+     <mat-tab label="Accumulative Ideas"> 
+        <cus-accumulative-chart  [Parent]="Me"  *ngIf="selectedIndex==3" [departmentlist]="departmentlist" [statuslist]="statuslist"  (SendEvents)="ChildEvent($event)"  >
+
+        </cus-accumulative-chart>
+     </mat-tab>
+     <mat-tab label="Division Summary"> 
+        <cus-summary-division-chart  [Parent]="Me"  *ngIf="selectedIndex==4" [departmentlist]="departmentlist" [statuslist]="statuslist"  (SendEvents)="ChildEvent($event)"  >
+
+        </cus-summary-division-chart>
+ 
+     </mat-tab>
+     <mat-tab label="Category by Division" > 
+        
+            <cus-category-division-chart  [Parent]="Me" *ngIf="selectedIndex==5"  [departmentlist]="departmentlist" [statuslist]="statuslist"  (SendEvents)="ChildEvent($event)"  >
+
+            </cus-category-division-chart>
+       
+
+      </mat-tab>
+  </mat-tab-group>
+
+  <mat-spinner *ngIf="!departmentlist"></mat-spinner>
+   
+ 

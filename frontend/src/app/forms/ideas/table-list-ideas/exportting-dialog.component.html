@@ -1,0 +1,16 @@
+ 
+<mat-dialog-content >
+<p mat-dialog-title  style="right: 10px;" >กำลังประมวลผล กรุณารอซักครู่...</p>
+<p mat-dialog-title > {{data.caption}} </p>
+<p mat-dialog-title >{{data.currentindex}} of {{data.totalrow}} Page</p>
+  <mat-progress-spinner   
+  color="info"
+  mode="indeterminate"
+  value="100" 
+  disableClose="true"
+  style="vertical-align: middle;align-items: center;text-align: center;"
+  >
+
+</mat-progress-spinner>
+</mat-dialog-content>
+

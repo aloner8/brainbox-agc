@@ -1,0 +1,104 @@
+
+<!-- <button (click)="AutoFocus()">
+  dsDataBaseInfo
+</button> -->
+<mat-progress-spinner *ngIf="loadnode"
+    class="example-margin"
+    color="primary"
+    mode="indeterminate"
+    >
+</mat-progress-spinner>
+
+<div *ngIf="!loadnode">
+ <button mat-icon-button  color="accent"  *ngIf="showHeaderReload"  aria-label="Example icon-button with menu icon" (click) = "reload()"  >
+  <mat-icon>cached</mat-icon>
+</button>
+<button mat-icon-button  color="accent"  *ngIf="showHeaderReload"  aria-label="Example icon-button with menu icon" (click) = "treeControl.expandAll()"  >
+  <mat-icon>settings_ethernet</mat-icon>
+</button>
+ 
+<button  mat-icon-button  *ngIf="showHeaderedit" color="primary" style="width: auto;"  (click) = "EditJSON()" >  <mat-icon>edit</mat-icon>  </button>
+<button  mat-icon-button *ngIf="showHeaderAddNew"  color="primary" style="width: auto;" (click) = "ReNewForm()"  > 
+  <mat-icon>auto_mode</mat-icon>
+</button>
+<button  mat-icon-button *ngIf="showHeaderAddNew"  color="primary" style="width: auto;" (click) = "CopyFormTo()"  > 
+  <mat-icon>content_copy</mat-icon>
+</button>
+
+<button  mat-icon-button *ngIf="showHeaderAddNew"  color="primary" style="width: auto;" (click) = "AddNewForm()"   > 
+  <mat-icon>add_circle_outline</mat-icon>
+</button>
+    <mat-form-field  appearance="outline"  style="width: 150px;" >
+        <mat-select [style.border-color]="'white'"  [style.color]="'white'"  [(ngModel)]="select_year" name="select_year" (selectionChange)="YearChange($event)" >         
+          @for (list of list_years; track list ) {
+            <mat-option [value]="list">{{list.display}}</mat-option>
+          }
+        </mat-select>      
+        <mat-label>Year:</mat-label>
+      </mat-form-field>
+</div>
+
+<mat-tree  #MyMatTree  *ngIf="!loadnode" [dataSource]="dataSource" [treeControl]="treeControl"   class="example-tree" [ngStyle] = "PanelStyle">
+  <!-- This is the tree node template for leaf nodes -->
+  <mat-tree-node *matTreeNodeDef="let node"  matTreeNodeToggle>
+    <li class="mat-tree-node" [style.borderColor] = "node.lastchild ? 'white' : 'rgb(165, 213, 255)' ">
+      <!-- use a disabled button to provide padding for tree leaf -->
+      <div  class="mat-tree-node-value">
+        <button mat-button class="NodeValue" [style]="{ 'left.px':50 }"  >
+          
+        <!--   <button   mat-button color="info"  (click) = "NodeClick('select' ,node.key,node)" > 
+            {{node.name}} : {{node.value}}  
+           </button>  -->
+             <ng-container *ngIf="node.name == 'idea_number'">
+              <label style="color: greenyellow;">{{node.name}} : {{node.value}}  </label>
+            <button mat-icon-button    style="color: lightcoral;"   (click) = "NodeClick('Edit Idea' ,node.key ,node)"  >
+                      <mat-icon>edit</mat-icon>
+                    </button>
+ 
+             </ng-container>
+              <ng-container *ngIf="node.name != 'idea_number'">
+                <label style="color: white; padding-top: 20px; " >{{node.name}} : {{node.value}}  </label>
+             </ng-container>
+          
+         
+
+        </button>
+      </div>
+    </li>
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+    <li>
+      <div class="mat-tree-node">
+        <div class="NodeText"              
+                >
+                <button mat-button matTreeNodeToggle 
+                [attr.aria-label]="'Toggle ' + node.name"
+                style="width: auto;"
+                >
+<!--                 <mat-icon class="mat-icon-rtl-mirror" >
+                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>  -->
+                        <mat-icon class="mat-icon-rtl-mirror"  style="color: white;" >
+                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+
+                </mat-icon> 
+                <p style="color: white;" >{{node.name}}  </p>
+            
+            
+                </button>
+         
+         
+          <button mat-icon-button   *ngFor="let btp of node.button ;index as bcp"    [color]="btp.color"   (click) = "NodeClick(btp.command ,node.key ,node)"  >
+            <mat-icon>{{btp.icon}}</mat-icon>
+          </button>
+
+        </div>
+      </div>
+      <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)" [style.borderColor] = "node.lastchild ? 'white' : 'blue' " >
+        <ng-container matTreeNodeOutlet></ng-container>
+      </ul>
+    </li>
+  </mat-nested-tree-node>
+</mat-tree>
+<p>Status</p>

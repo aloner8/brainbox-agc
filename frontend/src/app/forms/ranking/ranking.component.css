@@ -1,0 +1,40 @@
+#ranking{
+  position: relative; 
+  background-image: url('../../../assets/img/RankingBG.png');
+  background-repeat: no-repeat; 
+  background-size:contain;
+  
+
+}
+
+
+
+td{
+  color: black;
+  padding: 0px;
+  margin: 0px;
+}
+tr {
+  padding: 0px;
+  margin: 0px;
+}
+.captionlevel{ 
+  font-weight: bold;
+  padding: 0px;
+  margin: 0px;
+}
+.captionsub{  
+  padding: 0px;
+  margin: 0px;
+}
+.captioninfo{
+
+  font-style:italic ;
+  padding: 0px;
+  margin: 0px;
+}
+progress-box{
+  position: relative;
+}
+
+

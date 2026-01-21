@@ -1,0 +1,71 @@
+ 
+       
+       <table style="width: 100%; height: 100%;">
+          <tr>
+            <td >  
+                      
+            <!--   <year-picker [Name]="'YearStart'" [Parent]="Me" *ngIf="veiw_type=='Y'"  (SendEvents)="ChildEvent( $event ,'M')"  style="width: 100px;" [Label]="'Start'" >
+
+              </year-picker> -->
+              <month-picker  [Name]="'MonthStart'" [Parent]="Me" *ngIf="veiw_type=='M'"  (SendEvents)="ChildEvent( $event ,'M')"  style="width: 100px;" [Label]="'Start'">
+
+              </month-picker>
+              ||
+                       
+       <!--        <year-picker [Name]="'YearEnd'" [Parent]="Me" *ngIf="veiw_type=='Y'"  (SendEvents)="ChildEvent( $event ,'M')"  style="width: 100px;" [Label]="'End'" >
+
+              </year-picker> -->
+              <month-picker   [Name]="'MonthEnd'" [Parent]="Me" *ngIf="veiw_type=='M'"  (SendEvents)="ChildEvent( $event ,'M')"  style="width: 100px;"  [Label]="'End'">
+
+              </month-picker>
+              ||
+              <mat-form-field  appearance="fill" >
+                <mat-select [style.border-color]="'white'"  [(ngModel)]="divitionfilter" name="divitionfilter" (selectionChange)="StatusFilterChange($event)" >
+                  <mat-option  [value]="0">-- ALL --</mat-option>
+                  @for (list of departmentlist; track list ) {
+                    <mat-option [value]="list.value">{{list.display}}</mat-option>
+                  }
+                </mat-select>      
+                <mat-label>Division:</mat-label>
+              </mat-form-field>
+              ||
+<!--               <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color" [value]="veiw_type" (change)="changeView($event)" >
+                <mat-button-toggle value="M">Monthly</mat-button-toggle>
+                <mat-button-toggle value="Y">Yearly</mat-button-toggle>
+                
+              </mat-button-toggle-group> -->
+            <!--   <mat-form-field  appearance="fill" >
+                <mat-select [style.border-color]="'white'"  [(ngModel)]="statusfilter" name="divitionfilter" (selectionChange)="StatusFilterChange($event)" >
+                  <mat-option  [value]="0">-- ALL --</mat-option>
+                  @for (list of statuslist; track list ) {
+                    <mat-option [value]="list.value">{{list.display}}</mat-option>
+                  }
+                </mat-select>      
+                <mat-label>Status:</mat-label>
+              </mat-form-field> -->
+            </td>
+           <td style="width: 200px;" >
+<!--             <button mat-raised-button color="primary" style="margin-right: 20px;"  (click)="ExportJpg()"  >
+              <mat-icon svgIcon="iconJpg"></mat-icon>
+            </button>
+            <button mat-raised-button color="primary" style="margin-right: 20px;"  (click)="ExportExcel()" >
+              <mat-icon svgIcon="iconExcel"></mat-icon>
+            </button> -->
+           </td>
+          </tr>
+          <tr  styles="width: 100%; height: 600px">
+            <td style=" vertical-align: top ; "   colspan="2" *ngIf="chartBegin" >
+              <div  style="height: 600px; "  >
+                <canvasjs-chart *ngIf="ApprovalSummary['M']"
+                id="chartSummaryDivision" 
+                [options]="columnChartOptions"
+                styles="width: 100%; height: 600px;font-size:12px;"
+              ></canvasjs-chart>  
+              </div>
+
+            </td>
+            
+          </tr>
+        </table>
+
+ 

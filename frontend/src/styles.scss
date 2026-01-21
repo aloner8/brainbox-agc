@@ -1,0 +1,204 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/indigo-pink.scss";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+div.mat-mdc-form-field-subscript-wrapper {
+  height: 3px !important;
+} 
+div.mat-mdc-form-field-bottom-align {
+  height: 3px !important;
+}
+
+div.mdc-tab--active {
+  background-color: transparent  !important;
+  background-image: url("./assets/img/tab-bg.svg") !important;
+  background-repeat: no-repeat;
+  overflow: visible  !important;
+  background-size: cover;
+  z-index: 2;  
+   
+}
+
+.mat-mdc-checkbox label {
+    cursor: pointer;
+    color: white;
+}
+
+div.mat-ripple.mat-mdc-tab-ripple {
+    background-color: transparent  !important;
+    background-image: url("./assets/img/tab-bg.svg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: visible  !important;
+    align-items: start !important;
+    z-index: 2;
+    opacity: 1;
+     
+  }
+
+  mat-tab-body {
+    overflow: visible !important;
+  }
+
+  div.mat-mdc-tab-body-content {
+    overflow: visible !important;
+  }
+/*   .mat-tab-label {
+    min-width: 120px !important; // In addition to mat-strech-tabs allowing tabs to fill remaining space in parent container
+    padding: 5px;
+    height: 50px;
+     
+  } */
+ #ideatabheader.mat-mdc-tab-header {
+    width:900px !important ;
+    overflow: visible;
+    font-size: larger;
+  }
+ 
+  label.mdc-label {
+    color: blue;
+    font-weight: bold;
+  }
+  .mat-mdc-checkbox-touch-target{
+    color: white;
+    border-color: white;
+  }
+  input.mdc-checkbox{
+    color: white;
+    border-color: white;
+  }
+  .mdc-checkbox__native-control{
+    color: white;
+    border-color: white;
+  }
+  .__web-inspector-hide-shortcut__{
+    color: white;
+    border-color: white;
+  }
+/*   .mdc-tab__content {
+    //left: -30px;
+  }
+  .mdc-tab__text-label{
+    left: 10px;
+    font-size:large;
+  } */
+
+  .mat-button-toggle .mat-button-toggle-appearance-standard{
+    height: 40px !important;
+}
+
+  .mdc-tab {
+    
+   justify-content : left !important;
+ 
+   // padding-left: 2px !important;
+  } 
+
+mat-button-toggle-group {
+    height: 50px !important;
+}
+
+.mat-mdc-paginator-icon {
+  color: white !important ;
+}
+button.mat-mdc-button-touch-target {
+  color: white !important ;
+}
+ 
+
+processing-dialog {
+  opacity:  0.5 !important;
+}
+
+app-snack-bar.success-snackbar {
+  --mdc-snackbar-container-color: green !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+  --mat-mdc-snack-bar-button-color: white !important;
+  white-space: pre-wrap
+}
+
+app-snack-bar.green-snackbar {
+  background: rgb(65, 252, 134)  !important;
+  color: white  !important;
+}
+app-snack-bar.green-snackbar button {
+  background-color: rgb(65, 252, 134)  !important;
+  color: white  !important;
+  border: none  !important;
+}
+app-snack-bar.red-snackbar {
+  background: #F44336;
+  color: white;
+}
+app-snack-bar.red-snackbar button {
+  background-color: #F44336;
+  color: white !important;
+  border: none;
+}
+app-snack-barp.information {
+  background-color: beige;
+}
+
+
+html {
+	--mdc-snackbar-container-shape: 4px
+  --mdc-snackbar-container-color:rgb(16, 222, 23) ;
+	--mdc-snackbar-supporting-text-color: black;
+	--mat-snack-bar-button-color: #ff4081
+}
+
+/* html {
+	--mdc-snackbar-container-color:rgb(16, 222, 23) ;
+	--mdc-snackbar-supporting-text-color: black;
+	--mat-snack-bar-button-color: #ff4081
+} */
+
+html {
+	--mdc-snackbar-supporting-text-font: Roboto, sans-serif;
+	--mdc-snackbar-supporting-text-line-height: 20px;
+	--mdc-snackbar-supporting-text-size: 14px;
+	--mdc-snackbar-supporting-text-weight: 400
+  --mdc-snackbar-container-color: green !important;
+}
+
+.success-snackbar {
+  --mdc-snackbar-container-color:rgb(10, 84, 153) ;
+  --mdc-snackbar-supporting-text-color: white !important;
+  --mat-mdc-snack-bar-button-color: white !important;
+  --mat-mdc-button-label:white;
+  justify-content: center !important;
+  white-space: pre-wrap
+}
+.success-snackbar span {
+  color: rgb(19, 234, 109);
+}
+.mat-simple-snackbar {
+  justify-content: center !important;
+}
+
+.mat-expansion-indicator  .ng-trigger .ng-trigger-indicatorRotate .ng-star-inserted {
+  color: white;
+}
+
+.mat-mdc-form-field-required-marker{
+  font-size: xx-large;
+  color: #F44336;
+} 
+
+mat-checkbox label {
+  color: white;
+}
+
+.mat-mdc-snack-bar-container.snack-style {
+  --mdc-snackbar-container-color: #ed0621; /* background */
+  --mdc-snackbar-supporting-text-color: #fff; /* text */
+  
+  --mat-mdc-snack-bar-button-color: green; /* action button */
+  
+}
+.mat-mdc-snack-bar-container.snack-style .mdc-snackbar__label {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: xx-large;
+  line-height: 20px;
+}

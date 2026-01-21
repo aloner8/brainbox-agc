@@ -1,0 +1,185 @@
+table {
+  background-color: transparent;
+  bottom: 10px;
+}
+.mat-elevation-z8 {
+  position: relative;
+  border-radius: 30px;
+  padding-top: 15px;
+  color: white;
+  background-image: url('../../../../assets/img/table-box.svg');
+  background-repeat: no-repeat;
+ 
+  background-size:cover;
+  z-index: 4;  
+   
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  height: 1px !important;
+} 
+.mat-mdc-form-field-bottom-align {
+  height: 1px !important;
+}
+
+.around {
+
+}
+
+#tabledetail.mat-mdc-cell  {
+  border-color: white;
+  overflow: scroll;
+}
+
+th{
+  border-bottom: solid white ;
+  border-top: solid white ;
+}
+
+mat-table-row-item-outline-color {
+  border-color: white;
+}
+mat-mdc-cell {
+  border-color: white;
+}
+mat-cell {
+  border-color: white;
+}
+mat-form-field  {
+ 
+  background-color: rgba(9, 24, 90, 0.2);
+  color: white;
+  border-color: white;
+  margin-right: 5px;
+  width: 280px;
+ // height: 30px;
+}
+/* 
+.mat-mdc-text-field-wrapper  {
+  height: 30px !important;
+}
+.mdc-text-field  {
+  height: 30px !important;
+}
+.ng-tns-c3736059725-6  {
+  height: 30px !important;
+}
+.mdc-text-field--outlined {
+  height: 30px !important;
+} */
+ 
+
+ input {
+ 
+  background-color:transparent;
+  color: white;
+
+  
+}
+.mdc-notched-outline {
+  border-color: white;
+}
+.mdc-notched-outline--upgraded{
+  border-color: white;
+} 
+.ng-star-inserted{
+  border-color: white;
+}
+.cdk-overlay-container{
+  border-color: white;
+}
+.placeholder {
+  background-color:transparent;
+  color: white;
+}
+mat-label {
+  background-color:transparent;
+  color: white;
+}
+mat-select{
+  background-color:transparent;
+  color: white;
+}
+mat-paginator{
+  background-color: rgba(9, 24, 90, 0.2);
+  color: white;
+}
+td  {
+  color: white;
+}
+th  {
+  color: white;
+}
+/* Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+}
+/* Font color */
+input.mat-input-element {
+  color: white;
+}
+
+tr {
+  height: 30px;
+}
+mat-card-image {
+
+ 
+}
+
+.mat-form-field-type-mat-date-range-input .mat-hint {
+  color: white !important;
+}
+
+.mat-form-field-flex {
+  background-color: white !important;
+}
+
+.mdc-text-field--filled:not {
+  background-color: transparent !important;
+}
+.mdc-text-field--filled {
+  background-color: transparent !important;
+}
+
+.mdc-text-field--disabled {
+  background-color: transparent !important;
+}
+.mdc-text-field {
+  background-color: transparent !important;
+}
+.mat-date-range-input-inner {
+  color: white !important;
+}
+.mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}
+.mat-mdc-form-field-focus{
+  background-color: transparent !important;
+}
+mat-date-range-input {
+  background-color: transparent !important;
+  color: white !important;
+}
+.mat-date-range {
+  color: white !important;
+} 
+span.mat-date-range-input-separator{
+  color: white !important;
+}
+a.runnumber {
+  font-size: large;
+  font-weight: bolder;
+  cursor:pointer ;
+}
+a.runnumber:hover {
+  font-size: large;
+  font-weight: bolder;
+  cursor:pointer ;
+  background-color: rgb(11, 61, 225);
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+  background-color: rgba(0, 0, 255, 0.33) ;
+}

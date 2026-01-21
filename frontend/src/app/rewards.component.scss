@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: grid; /* Enable grid layout on the body */
+  place-items: center; /* Center both horizontally and vertically */
+}
+
+#rewardContainer {
+    background-image: url('../assets/img/hof-background.svg');
+    background-repeat: no-repeat;
+   
+    background-size:cover;
+    font-family: 'Aptosa', sans-serif  ;
+    font-size: larger;
+}
+
+.centered-div {
+  width: 200px;
+  height: 150px;
+  background-color: lightcoral;
+  text-align: center;
+  padding-top: 50px;
+}
+button:hover {
+  background-color: #005f73 !important;
+}
+table.subrewards button {
+
+  border: #00000068 8px solid !important;
+} 
+table.subrewards h3 {
+  font-size: larger;
+  font-weight: bold;
+  margin: 0;
+} 
+
+table.subrewards p {
+  font-size: medium;  
+  margin: 0;
+} 
+
+table.listsubrewards h3 {
+  font-size: larger;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+} 
+table.listsubrewards td {
+  border-bottom: white 2px solid;
+  height: 50px;
+} 
+
+table.listsubrewards p {
+  font-size: medium;  
+  margin: 0;
+  color: white; 
+} 
+
+table.listsubrewards{
+   background-color: #00000068  !important;
+}

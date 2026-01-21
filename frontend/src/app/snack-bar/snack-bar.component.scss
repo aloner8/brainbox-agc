@@ -1,0 +1,42 @@
+.snack-style {
+    background-color: red !important;
+    color: white !important;
+    font-size: xx-large;
+}
+
+html {
+	--mdc-snackbar-container-color: green !important;
+	--mdc-snackbar-supporting-text-color: black;
+	--mat-snack-bar-button-color: #ff4081
+}
+
+::ng-deep .success-snackbar {
+    --mdc-snackbar-container-color: green !important;
+    --mdc-snackbar-supporting-text-color: white !important;
+    --mat-mdc-snack-bar-button-color: white !important;
+    white-space: pre-wrap;
+    font-size: xx-large;
+  }
+
+  ::ng-deep .green-snackbar {
+    background: rgb(65, 252, 134)  !important;
+    color: white  !important;
+    font-size: xx-large;
+}
+::ng-deep .green-snackbar button {
+    background-color: rgb(65, 252, 134)  !important;
+    color: white  !important;
+    border: none  !important;
+}
+::ng-deep .red-snackbar {
+    background: #F44336;
+    color: white;
+}
+::ng-deep .red-snackbar button {
+    background-color: #F44336;
+    color: white !important;
+    border: none;
+}
+::ng-deep p.information {
+    background-color: beige;
+}

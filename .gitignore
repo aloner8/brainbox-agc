@@ -1,0 +1,23 @@
+# --- Docker / Database ---
+pgdata/
+database/
+data/
+**/pgdata/
+**/database/
+**/data/
+
+# --- Node ---
+node_modules/
+npm-debug.log
+
+# --- Env ---
+.env
+.env.*
+
+# --- Build ---
+dist/
+build/
+
+# --- OS ---
+.DS_Store
+Thumbs.db

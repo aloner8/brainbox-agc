@@ -1,0 +1,621 @@
+<div class="bg_form">
+  <form [formGroup]="ProjectForm" (ngSubmit)="onSubmit()">
+ 
+    <mat-grid-list cols="6" rowHeight="80px" gutterSize="0px">
+
+          <mat-grid-tile
+            [colspan]="6"
+            [rowspan]="1">
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Title (ชื่อเรื่อง)</mat-label>
+                <input matInput  required placeholder="" style="width: 100%;"  (keydown.enter)="null"  formControlName="title"  id="title" name="title"  minlength="10" >
+                 
+              </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile
+          [colspan]="4"
+          [rowspan]="1">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Ideas By (เจ้าของไอเดีย) </mat-label>
+            <input type="text" matInput [formControl]="IdeaByControl" [matAutocomplete]="autoIdeaBy"  required >
+            <mat-autocomplete #autoIdeaBy="matAutocomplete" [displayWith]="displayFnMember" (optionSelected)="IdeaBySelected($event)">
+              @for (option of filteredIdeaBy | async; track option) {
+                <mat-option [value]="option">{{option.display}}</mat-option>
+              }
+            </mat-autocomplete>
+           <!--  <input          
+            [formControl]="IdeaByControl" 
+            [matAutocomplete]="automyControl2"
+            [disabled]="ProjectDetail.current_status>3"
+            />
+
+            
+            <mat-autocomplete #automyControl2="matAutocomplete" [displayWith]="displayFnMember" (optionSelected) ="IdeaBySelected($event)">
+              @for (option of filteredIdeaBy | async;  track option) {
+                <mat-option [value]="option">{{option.display}}</mat-option>
+              }
+              </mat-autocomplete> -->
+                @if (IdeaByControl.value &&  IdeaByControl.enabled) {
+            <mat-icon matSuffix  (click)="IdeaByControl.setValue(null)" >clear</mat-icon>
+     }
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile
+        [colspan]="2"
+        [rowspan]="1">
+        <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label>Suggest Date (วันที่สร้าง)</mat-label>          
+          <input matInput required [matDatepicker]="picker" formControlName="suggest_date">     
+          <mat-datepicker-toggle matIconSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          
+        </mat-form-field>
+      </mat-grid-tile>
+
+        <mat-grid-tile
+            [colspan]="6"
+            [rowspan]="2">            
+       
+                 
+          <mat-form-field class="example-chip-list"  >
+            <mat-label>Team Member (รายชื่อทีมงาน)</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Enter fruits" >
+              @for (member of memberteam ; track member) {
+                <mat-chip-row                  
+                  (removed)="remove_member($event,member)"
+                  [editable]="ProjectForm.enabled"                  
+                  [aria-description]="'press enter to edit ' + member.display">
+                  {{member.display}}
+                  <button matChipRemove [attr.aria-label]="'remove ' + member.display"  *ngIf="ProjectForm.enabled" >
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+              }
+              <input [placeholder]="ProjectForm.enabled?'New member...':''"
+                    [matChipInputFor]="chipGrid"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="add($event)"
+                    [formControl]="myControl" 
+                    [matAutocomplete]="automyControl"
+                    [disabled]="!ProjectForm.enabled"
+                    />
+
+                    
+                    <mat-autocomplete #automyControl="matAutocomplete" [displayWith]="displayFn" (optionSelected) ="MemberSelected($event)">
+                      @for (option of filteredOptions | async;  track option) {
+                        <mat-option [value]="option">{{option.display}}</mat-option>
+                      }
+                      </mat-autocomplete>
+
+            </mat-chip-grid>
+          </mat-form-field>
+               
+ 
+          </mat-grid-tile>
+
+          <mat-grid-tile
+          [colspan]="6"
+          [rowspan]="1">
+          <mat-form-field  appearance="outline" style="width: 100%;"  >
+            <mat-label>Category (ประเภท)</mat-label>
+            <mat-select  [style.border-color]="'white'"   formControlName="category_master_id" id="category_master_id" name="category_master_id" (selectionChange)="CategoryMasterChange($event)"   required>
+              <!-- <mat-option>-- None --</mat-option> -->
+              @for (list of categorylist; track list ) {
+                <mat-option [value]="list.value">{{list.display}}</mat-option>
+              }
+            </mat-select>            
+          </mat-form-field>
+
+        </mat-grid-tile>
+      
+      <mat-grid-tile
+      [colspan]="3"
+      [rowspan]="2" >
+      <mat-form-field    floatLabel="always" appearance="outline"  style="width: 100%;">
+        <mat-label>Group(กลุ่ม) </mat-label>
+        <input matInput formControlName ="project_group"  style="display:none"   required>
+        <mat-radio-group aria-label="Select an option" formControlName ="project_group"  style="position: relative;"  (change)="changeproject_group($event)">
+          <mat-radio-button [value]="1"   >Process</mat-radio-button>
+          <mat-radio-button [value]="2"  >Non-Process</mat-radio-button>
+        </mat-radio-group>
+      </mat-form-field>
+
+ 
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="3"
+[rowspan]="2">
+
+  <mat-form-field   floatLabel="always" appearance="outline"  style="width: 100%;">
+  <mat-label>External Partnership(ทำร่วมกับบริษัทภายนอก): </mat-label>
+  <input matInput formControlName ="ext_partner"  style="display:none"   required> 
+    <mat-radio-group aria-label="Select an option"  formControlName ="ext_partner"   style="position: relative;" (change)="changeext_partner($event)" >
+      <mat-radio-button [value]="1"  >Yes</mat-radio-button>
+      <mat-radio-button [value]="2"  >No</mat-radio-button>    
+  </mat-radio-group>
+  <mat-form-field appearance="outline" style="width: 100%;" *ngIf="ProjectForm.get('ext_partner')?.value==1" >
+    <mat-label>With Company (ระบุชื่อผู้มีส่วนได้เสีย)</mat-label>
+    <input matInput  placeholder="" style="width: 100%;"  formControlName="partner_name"  id="partner_name" name="partner_name"   [required]="ProjectForm.get('ext_partner')?.value==1"  >
+     
+  </mat-form-field>
+</mat-form-field>
+
+ 
+ 
+</mat-grid-tile>
+<mat-grid-tile
+[colspan]="6"
+[rowspan]="2">
+<mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Present Situation(ข้อมูลสภาพปัจจุบัน)</mat-label>
+    <textarea matInput required placeholder="" style="width: 100%;height: 100%;"  rows="4" formControlName="present_situation"></textarea>
+     
+    
+  </mat-form-field>
+
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="6"
+[rowspan]="2">
+<mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Detail of Innovations(รายละเอียดข้อเสนอแนะ)</mat-label>
+    <textarea matInput required placeholder="" style="width: 100%;height: 100%;"  rows="4"  formControlName="innovation_detail" ></textarea>
+     
+    
+  </mat-form-field>
+
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="6"
+[rowspan]="2">
+<mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Calculation Text(รายละเอียดการคำนวณ)</mat-label>
+    <textarea matInput required placeholder="" style="width: 100%;height: 100%;"  rows="4" formControlName="calculation_text"></textarea>
+     
+    
+  </mat-form-field>
+
+</mat-grid-tile>
+
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Investment Plan(เงินทุน-แผน)</mat-label>
+  <input matInput  type="text" appCurrencyI18n  placeholder="" style="width: 90%; text-align: right; " formControlName="investment_plan"  (keyup)="CalculateIG('Plan')" >
+  <label matSuffix>THB  .</label>
+  
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Cost Saving Plan (ผลตอบแทน-แผน)</mat-label>
+  <input matInput  type="text" appCurrencyI18n  placeholder="" style="width: 80%;text-align: right; "  formControlName="cost_saving_plan"  (keyup)="CalculateIG('Plan')">
+  <label matSuffix>THB/Year  .</label>
+  
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;" >
+  <mat-label>I/G Expected Plan(ระยะเวลาคืนทุน-แผน)</mat-label>
+  <input matInput  type="text"  appCurrencyI18n  placeholder="" style="width: 90%;text-align: right; " formControlName="ig_expected_plan">
+  <label matSuffix>Year .</label>
+  
+</mat-form-field>
+</mat-grid-tile>
+
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Investment Actual(เงินทุน-จริง)</mat-label>
+  <input matInput type="text" appCurrencyI18n  placeholder="" style="width: 90%;text-align: right; " formControlName="investment_actual"  (keyup)="CalculateIG('Actual')">
+  <label matSuffix>THB  .</label>
+  
+</mat-form-field>
+</mat-grid-tile>
+
+
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Cost Saving Actual(ผลตอบแทน-จริง)</mat-label>
+  <input matInput  type="text" appCurrencyI18n  placeholder="" style="width: 80%;text-align: right; "  formControlName="cost_saving_actual" (keyup)="CalculateIG('Actual')">
+  <label matSuffix>THB/Year  .</label>
+  
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;" disabled>
+  <mat-label>I/G Expected Actual(ระยะเวลาคืนทุน-จริง)</mat-label>
+  <input matInput  type="text"  appCurrencyI18n  placeholder="" style="width: 90%;text-align: right; " formControlName="ig_expected_actual" #ig_expected_actual >
+  <label matSuffix>Year  .</label>
+  
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="6"
+[rowspan]="2">
+<mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Expected Result(ผลที่คาดว่าจะได้รับ):</mat-label>
+    <textarea matInput  required placeholder="" style="width: 100%;height: 100%;"  rows="4" formControlName="expect_result"></textarea>
+     
+    
+  </mat-form-field>
+
+</mat-grid-tile>
+<mat-grid-tile
+[colspan]="6"
+[rowspan]="2">
+<mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Note (บันทึกข้อความ)</mat-label>
+    <textarea matInput placeholder="" style="width: 100%;height: 100%;"  rows="4" formControlName="status_detail"></textarea>     
+    
+  </mat-form-field>
+
+</mat-grid-tile>
+
+
+<mat-grid-tile
+[colspan]="3"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Moc Ref(เลขที่เอกสาร MOC):</mat-label>
+  <input matInput placeholder="" style="width: 100%;" formControlName="moc_ref" id="moc_ref"  [required]="getDocRef('MOC')"   >   
+  
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="3"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>WI Ref(เลขที่เอกสาร WI):</mat-label>
+  <input matInput placeholder="" style="width: 100%;" formControlName="wi_ref" id="wi_ref"  [required]="getDocRef('WI')"  >   
+  
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="6"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Other Doc(เอกสารอื่น ๆ): {{getDocRef('OTHERNAME')}} </mat-label>
+
+  <input matInput placeholder="" style="width: 100%;" formControlName="other_doc" id="other_doc" [required]="getDocRef('OTHER')"  >   
+  
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Approver Level1(ผู้อนุมัติคนที่ 1):</mat-label>  
+  <input matInput placeholder="" style="width: 100%;" [formControl]="ControlApprove_1" [matAutocomplete]="autoapprove1" required   (keyup)="Approverkeyup($event,1)">   
+  <mat-autocomplete #autoapprove1="matAutocomplete" [displayWith]="displayFnMember" (optionSelected) ="optionSelected($event,1)" (mouseleave) ="optionSelected($event,1)">
+    @for (option of filteredApprove_1   | async;  track option) {
+      <mat-option [value]="option">{{option.display}}</mat-option>
+    }
+
+    </mat-autocomplete>
+    @if (ControlApprove_1.value  &&  ControlApprove_1.enabled) {
+            <mat-icon matSuffix  (click)="ControlApprove_1.setValue(null)" >clear</mat-icon>
+     }
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Approver Level2(ผู้อนุมัติคนที่ 2):</mat-label>  
+  <input matInput placeholder="" style="width: 100%;" [formControl]="ControlApprove_2" [matAutocomplete]="autoapprove2"   (keyup)="Approverkeyup($event,2)" >   
+  <mat-autocomplete #autoapprove2="matAutocomplete" [displayWith]="displayFnMember" (optionSelected) ="optionSelected($event,2)" >
+    @for (option of filteredApprove_2   | async;  track option) {
+      <mat-option [value]="option">{{option.display}}</mat-option>
+    }
+
+    </mat-autocomplete>
+            @if (ControlApprove_2.value &&  ControlApprove_2.enabled ) {
+            <mat-icon matSuffix  (click)="ControlApprove_2.setValue(null)" >clear</mat-icon>
+     }
+</mat-form-field>
+</mat-grid-tile>
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Approver Level3(ผู้อนุมัติคนที่ 3):</mat-label>  
+  <input matInput placeholder="" style="width: 100%;" [formControl]="ControlApprove_3" [matAutocomplete]="autoapprove3"   (keyup)="Approverkeyup($event,3)" >   
+  <mat-autocomplete #autoapprove3="matAutocomplete" [displayWith]="displayFnMember" (optionSelected) ="optionSelected($event,3)" (mouseleave) ="optionSelected($event,3)">
+    @for (option of filteredApprove_3   | async;  track option) {
+      <mat-option [value]="option">{{option.display}}</mat-option>
+    }
+
+    </mat-autocomplete>
+        @if (ControlApprove_3.value  &&  ControlApprove_3.enabled ) {
+            <mat-icon matSuffix  (click)="ControlApprove_3.setValue(null)" >clear</mat-icon>
+     }
+</mat-form-field>
+</mat-grid-tile>
+ 
+
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;"  >
+  <mat-label>Coordinator Level1:</mat-label>  
+  <input matInput placeholder="" style="width: 100%;" [formControl]="ControlCoordinator_1" [matAutocomplete]="autocoordinator1" (keyup)="Coordinaterkeyup($event,1)">   
+  <mat-autocomplete #autocoordinator1="matAutocomplete" [displayWith]="displayFnMember" (optionSelected) ="optionSelected($event,4)">
+    @for (option of filteredCoordinator_1   | async;  track option) {
+      <mat-option [value]="option">{{option.display}}</mat-option>
+    }
+
+    </mat-autocomplete>
+        @if (ControlCoordinator_1.value &&  ControlCoordinator_1.enabled ) {
+            <mat-icon matSuffix  (click)="ControlCoordinator_1.setValue(null)" >clear</mat-icon>
+     }
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Coordinator Level2:</mat-label>  
+  <input matInput placeholder="" style="width: 100%;" [formControl]="ControlCoordinator_2" [matAutocomplete]="autocoordinator2"  (keyup)="Coordinaterkeyup($event,2)">   
+  <mat-autocomplete #autocoordinator2="matAutocomplete" [displayWith]="displayFnMember" (optionSelected) ="optionSelected($event,5)">
+    @for (option of filteredCoordinator_2  | async;  track option) {
+      <mat-option [value]="option">{{option.display}}</mat-option>
+    }
+
+    </mat-autocomplete>
+          @if (ControlCoordinator_2.value &&  ControlCoordinator_2.enabled ) {
+            <mat-icon matSuffix  (click)="ControlCoordinator_2.setValue(null)" >clear</mat-icon>
+     }
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 100%;">
+  <mat-label>Coordinator Level3:</mat-label>  
+  <input matInput placeholder="" style="width: 100%;" [formControl]="ControlCoordinator_3" [matAutocomplete]="autocoordinator3" (keyup)="Coordinaterkeyup($event,3)">   
+  <mat-autocomplete #autocoordinator3="matAutocomplete" [displayWith]="displayFnMember" (optionSelected) ="optionSelected($event,6)">
+    @for (option of filteredCoordinator_3   | async;  track option) {
+      <mat-option [value]="option">{{option.display}}</mat-option>
+    }
+
+    </mat-autocomplete>
+        @if (ControlCoordinator_3.value &&  ControlCoordinator_3.enabled) {
+            <mat-icon matSuffix  (click)="ControlCoordinator_3.setValue(null)" >clear</mat-icon>
+     }
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1"
+*ngIf="isCoordinaterState(1);"
+>
+<mat-form-field  appearance="outline" style="width: 100%;" >
+  <mat-label>Sub Category</mat-label>
+  <mat-select  [style.border-color]="'white'"   formControlName="subcategory_master_id" id="subcategory_master_id" name="subcategory_master_id" (selectionChange)="CategoryMasterChange($event)" >
+    <mat-option>-- None --</mat-option>
+    @for (list of subcategorylist; track list ) {
+      <mat-option [value]="list.value">{{list.display}}</mat-option>
+    }
+  </mat-select>            
+</mat-form-field>
+
+</mat-grid-tile>
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1"
+*ngIf="isCoordinaterState(1);"
+>
+<mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>CO2 Reduction Plan (kg.)</mat-label>
+    <input matInput   placeholder="" style="width: 100%;"  formControlName="hardsaving"  id="hardsaving" name="hardsaving"   >
+     
+  </mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1"
+*ngIf="isCoordinaterState(1);"
+>
+<mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>CO2 Reduction Actual (kg.)</mat-label>
+    <input matInput   placeholder="" style="width: 100%;"  formControlName="softsaving"  id="softsaving" name="softsaving"  >
+     
+  </mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="6"
+[rowspan]="3"  >
+<table style="width: 100%; height: 100%; top: 0px; text-align:start ; " >
+  <tr><td><mat-label>Document Attachment: </mat-label> <br>  <mat-label>เอกสารแนบ: </mat-label>   </td>
+<td rowspan="3"  style="width: 70%;  vertical-align: top ; border: solid 1px;  border-color: rgb(20, 138, 217);   padding: 10px ; "   *ngIf="ProjectForm.get('id')?.value != -1" >
+
+  <mat-chip  
+
+  *ngFor="let file of filedownload"
+  [removable]="ProjectForm.enabled"
+  (removed)="remove_file($event,file)">   
+  <div>
+    <div matLine><a [href]="urldownload + file.filepath" [download]="file.clientname"  download  target="_blank"> {{file.clientname}} </a> </div>    
+  </div>
+  
+  <mat-icon matChipRemove *ngIf="ProjectForm.enabled" >cancel</mat-icon>
+  
+
+</mat-chip>
+</td>
+<td rowspan="3"  style="width: 70%;  vertical-align: top ; border: solid 1px;  border-color: rgb(20, 138, 217);   padding: 10px ; "   *ngIf="ProjectForm.get('id')?.value == -1" >
+  <mat-chip  
+  
+  *ngFor="let file of filedownload"
+  [removable]="ProjectForm.enabled"
+  (removed)="remove_new_file($event,file)">   
+  <div>
+    <div matLine><a [href]="urldownload + file.filepath" [download]="file.clientname"  download  target="_blank"> {{file.clientname}} </a> </div>    
+  </div>
+  
+  <mat-icon matChipRemove *ngIf="ProjectForm.enabled" >cancel</mat-icon>
+  
+
+</mat-chip>
+   
+</td>
+</tr>
+ 
+
+  <tr><td   style="width: 30%; overflow: hidden;"  >
+    
+    <ngx-dropzone [disabled] ="!ProjectForm.enabled " (change)="onSelect($event)" [expandable]="true"   style="height: 170px; width: 100%; overflow: hidden; background-color: gray; "  [style.Color]="ProjectForm.enabled?'greenyellow':'gray'"   >
+      <ngx-dropzone-label> 
+        <mat-icon class="material-symbols-outlined"  >upload</mat-icon><br>
+         ลากไฟล์มาวาง หรือ คลิก เพื่อเพิ่มไฟล์ <br>
+        Drag & Drop your file or click here to add it (Totally not over 20 MB)
+      </ngx-dropzone-label>
+      <ngx-dropzone-preview *ngFor="let f of files" [removable]="ProjectForm.enabled" (removed)="onRemove(f)"  >
+        <ngx-dropzone-label> 
+           {{ f.name }} ({{ f.type }})           
+          </ngx-dropzone-label>
+      </ngx-dropzone-preview>
+    </ngx-dropzone>
+  </td>
+  
+</tr>
+
+</table>
+
+
+    
+  
+ <!--  <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
+  <br>
+  
+  <mat-file-upload-queue #fileUploadQueue
+      [fileAlias]="'file'"
+      [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">
+  
+      <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+  </mat-file-upload-queue> -->
+  
+</mat-grid-tile>
+
+
+<mat-grid-tile
+[colspan]="6"
+[rowspan]="6" style=" position: relative; text-align: start; overflow: scroll; "  *ngIf="ProjectForm.get('id')?.value != -1" >
+   <table class="statedetail" style="width: 95%; height: 300px ;  border: solid blue; color: blue; border-width: 1px; text-align: start; overflow: scroll; "    >
+    
+      <thead>
+        <th colspan="2">
+         {{ProjectDetail.running}}  Status:       
+        </th>
+        <th colspan="4">
+          <status-img [Value] = "0" [Caption] = "ProjectDetail.currentstatus" style="width: 100%;height: auto;"   ></status-img>  
+         </th>
+        
+      </thead>
+      <thead  style=" background-color: blue; border: solid blue; color: white; border-width: 1px; ">
+        <th> # </th>
+        <th>Step</th>
+        <th>StateHolder</th>
+        <th>Date</th>
+        <th>Comment</th>
+        <th>Document Requirement</th>
+        <th>E-mail</th>
+      </thead>
+    
+    
+    <tr *ngFor="let s of ProjectDetail.statedetail " style="border: solid blue; color: blue; border-width: 1px; ">
+      <td>{{s.running}}</td>
+      <td>{{s.step}}</td>
+      <td>{{s.stakeholder}}</td>
+      <td>{{s.updatedate}}</td>
+      <td>{{s.comment}}</td>
+      <td>{{s.documentreqution}}</td>
+      <td style="width: 60px;">
+     <!--    <button  *ngIf="s.states_mail" mat-mini-fab [color]="getColorMail(s.states_mail[0])" aria-label="" (click)="OpenMailDetail(s.states_mail[0])" >
+          <mat-icon  matBadge="{{s.states_mail[0].repeat_time}}" [matBadgeColor]="getColorMail(s.states_mail[0])" >mail_outline</mat-icon>
+        </button> -->
+        <mat-icon  matBadge="{{s.states_mail[0].repeat_time}}" [matBadgeColor]="getColorMail(s.states_mail[0])"  (click)="OpenMailDetail(s.states_mail[0])" >mail_outline</mat-icon>
+        
+    </tr>
+   </table>
+   
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="6"
+[rowspan]="5" style=" position: relative; text-align: start; overflow: scroll; "  *ngIf="ProjectForm.get('id')?.value != -1" >
+   <table class="pointdetail" style="width: 95%; height: 300px ;  border: solid blue; color: blue; border-width: 1px; text-align: start; overflow: scroll; "    >
+    
+     
+      <thead  style=" background-color: blue; border: solid blue; color: white; border-width: 1px; ">
+        
+        <th>State Date</th>
+        <th>Status</th>
+        <th>Point</th>
+        <th>Accumulate Points</th>
+
+      </thead>
+    
+    
+    <tr *ngFor="let p of ProjectDetail.point_list " style="border: solid blue; color: blue; border-width: 1px; ">
+      <td>{{p.point_date}}</td>
+      <td>{{p.description}}</td>
+      <td>{{p.point}}</td>
+      <td>{{p.accumulate_points}}</td>      
+        
+    </tr>
+   </table>
+</mat-grid-tile>
+
+<!-- <mat-grid-tile
+[colspan]="6"
+[rowspan]="2"   
+>
+<div class="footer">
+<p>...</p>
+</div>
+</mat-grid-tile> -->
+</mat-grid-list>
+
+ 
+
+</form>
+ 
+</div>
+

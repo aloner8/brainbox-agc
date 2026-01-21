@@ -1,0 +1,8 @@
+<svg width="393" height="92" viewBox="0 0 393 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 79.035V8C0 3.58172 3.58171 0 7.99999 0H368.928C372.106 0 374.983 1.88131 376.257 4.79294L391.799 40.3104C392.694 42.3549 392.694 44.6801 391.799 46.7245L376.257 82.242C374.983 85.1537 372.106 87.035 368.928 87.035H8C3.58172 87.035 0 83.4532 0 79.035Z" fill="#F4F4F4" stroke="white" stroke-width="1" filter="url(#filter1)"/>
+<defs>
+    <filter id="filter1" x="0" y="0" width="400" height="90">
+      <feDropShadow dx="3" dy="6" stdDeviation="2" flood-color="gray" flood-opacity="0.8" />
+    </filter>
+</defs>
+</svg>

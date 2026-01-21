@@ -1,0 +1,124 @@
+<table  style="width: auto;height:60px;vertical-align: top;"  >
+  <tr>
+      <td  *ngIf="getUserLevel('[SD]')"  >
+
+                 <img mat-card-image class="bgButtonCommand" [src] ="BaseHref + 'assets/img/save-draft-button.svg'"    (click)="SaveDraft()" style="object-fit: cover; "   >
+                
+          
+      </td>
+  
+  
+      <td  *ngIf=" getUserLevel('[SD]')  && EditLevel=='Editable' " style="width: auto;height:60px;cursor:pointer ;"   >
+          <img mat-card-image [src] ="BaseHref + 'assets/img/save-send-to-approve-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="SendApprove()" >         
+
+      </td>
+            <td  *ngIf=" getUserLevel('[SD]')  && EditLevel=='Editable' " style="width: auto;height:60px;cursor:pointer ;"   >
+            
+                    <img mat-card-image class="bgButtonCommand" [src] ="BaseHref + 'assets/img/delete.svg'"    (click)="Delete()"    >
+              
+
+      </td>
+   
+  <ng-container *ngIf=" ShowMode!='NewIdeas' &&  CurrentState== 4  && getUserLevel('[A]') ">
+    
+        <td style="width: auto;height:60px;cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/approve-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="Approver('Approve')" >           
+        </td>  
+  
+        <td style="width: auto;height:65px;cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/not-approved-button.svg'"   class="bgButtonCommand" style="width: auto;height:63px;cursor:pointer ;"  (click)="Approver('Not Approve')" >           
+        </td>  
+    
+    
+        <td  *ngIf="getUserLevel('[AME]')" style="cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/ask-more-button.svg'"   class="bgButtonCommand" style="width: auto;height:55px;cursor:pointer ;"  (click)="Approver('Ask More')" >           
+        </td>      
+ 
+  </ng-container>
+
+  <ng-container *ngIf=" ShowMode!='NewIdeas' &&  CurrentState== 5   && getUserLevel('[ISTC]') ">
+    
+        <td style="width: auto;height:60px;cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/save-draft-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="Implement('Save Draft Implement')" >      </td>  
+            <td style="width: auto;height:60px;cursor:pointer ;"  ><img mat-card-image [src] ="BaseHref + 'assets/img/save-send-to-coordinator-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="Implement('Implement Save & Send to Coordinator')"  > </td>
+            <td style="width: auto;height:60px;cursor:pointer ;"  ><img mat-card-image [src] ="BaseHref + 'assets/img/not-implement-button.svg'"   class="bgButtonCommand" style="width: auto;height:54px;cursor:pointer ;"  (click)="Implement('Not Implement')" >                                 </td>
+
+        <td style="width: auto;height:60px;cursor:pointer ;"  >            
+            <img mat-card-image [src] ="BaseHref + 'assets/img/delete.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="Delete()"  *ngIf="showstate==''" >           
+            <img mat-card-image [src] ="BaseHref + 'assets/img/cancel-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="showstate='';Implement('FormDisable')"  *ngIf="showstate=='save'" >           
+        </td>  
+
+ 
+  </ng-container>
+
+  <ng-container *ngIf=" ShowMode!='NewIdeas' &&  (CurrentState== 6 || CurrentState== 9 )  && getUserLevel('[RDTA]')   ">
+
+        <td style="width: auto;height:60px;cursor:pointer ;"  >            
+            <img mat-card-image [src] ="BaseHref + 'assets/img/save-draft-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="showstate='';Defend('Save Defend')"  >                       
+            
+            
+        </td>  
+<td>
+    <img mat-card-image [src] ="BaseHref + 'assets/img/raise-defend-to-approver-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="Defend('Raise Defend to Approver')"  >     
+</td>
+
+        <td style="width: auto;height:60px;cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/delete.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="Delete()"  *ngIf="showstate==''" >           
+            <img mat-card-image [src] ="BaseHref + 'assets/img/cancel-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="showstate=''; Defend('FormDisable')"  *ngIf="showstate=='save'" >           
+        </td>  
+
+  </ng-container>
+<!--     <ng-container *ngIf=" ShowMode!='NewIdeas' &&  (  CurrentState== 9)  && getUserLevel('[RDTA]')   ">
+
+        <td style="width: auto;height:60px;cursor:pointer ;"  >            
+            <img mat-card-image [src] ="BaseHref + 'assets/img/save-defend-draft-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="showstate='';Defend('Save Defend')"  >           
+            <img mat-card-image [src] ="BaseHref + 'assets/img/raise-defend-to-approver-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="Defend('Raise Defend to Approver')"  >     
+            
+        </td>  
+        <td style="width: auto;height:60px;cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/delete-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="Delete()" *ngIf="showstate==''" >           
+            <img mat-card-image [src] ="BaseHref + 'assets/img/cancel-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="showstate=''; Defend('FormDisable')"  *ngIf="showstate=='save'" >           
+        </td>  
+     
+  </ng-container> -->
+
+  <ng-container *ngIf=" ShowMode!='NewIdeas' &&  CurrentState== 13   && getUserLevel('[AP]')  ">
+
+        <td style="width: auto;height:60px;cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/save-by-coordinator-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="apply('Implement Save By Coordinator');"  >           
+        </td>  
+
+
+    
+        <td *ngIf="showstate==''"  style="width: auto;height:60px;cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/applied-button.svg'"   class="bgButtonCommand" style="width: auto;height:68px;cursor:pointer ;"  (click)="apply('Applied')" >           
+        </td>  
+    
+    
+        <td *ngIf="showstate==''" style="width: auto;height:60px;cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/not-applied-button.svg'"   class="bgButtonCommand" style="width: auto;height:57px;cursor:pointer ;"  (click)="apply('Not Applied')" >           
+        </td>  
+    
+        <td style="width: auto;height:60px;cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/delete.svg'"   class="bgButtonCommand" style="width: auto;height:58px;cursor:pointer ;"  (click)="Delete()" *ngIf="showstate==''" >           
+            <img mat-card-image [src] ="BaseHref + 'assets/img/cancel-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="showstate='';apply('FormDisable');showstate=''"  *ngIf="showstate=='save'" >           
+        </td>  
+    
+  </ng-container>
+
+   <ng-container *ngIf=" ShowMode!='NewIdeas' &&  CurrentState== 10   &&  getUserLevel('[SA]')  ">
+
+        <td style="width: auto;height:60px;cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/save-by-admin-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="apply('Appile Save By Admin');"  >           
+        </td>  
+
+
+     
+        <td style="width: auto;height:60px;cursor:pointer ;"  >
+            <img mat-card-image [src] ="BaseHref + 'assets/img/delete.svg'"   class="bgButtonCommand" style="width: auto;height:58px;cursor:pointer ;"  (click)="Delete()" *ngIf="showstate==''" >           
+            <img mat-card-image [src] ="BaseHref + 'assets/img/cancel-button.svg'"   class="bgButtonCommand" style="width: auto;height:60px;cursor:pointer ;"  (click)="showstate='';apply('FormDisable');showstate=''"  *ngIf="showstate=='save'" >           
+        </td>  
+    
+  </ng-container>
+  
+</table>

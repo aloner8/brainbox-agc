@@ -1,0 +1,119 @@
+
+div.confirm-form {
+  min-width: 800px; 
+  background-color: #0d4cde;
+  
+}
+
+div.topdialog {
+ width:100%; 
+ text-align: right;
+ color: white;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+input {
+  width: 600px;
+}
+h2 {
+  color: gold  !important;
+}
+mat-dialog-title{
+  color: gold  !important;
+}
+td.label{
+  color: white;
+  text-align: right;
+  width: 80px;
+}
+td.inputdata{
+  color:black;
+  background-color: white;
+  text-align: left;
+  width: 80%;
+}
+td.SubCaptionLong{
+  font-size: medium;
+  color: white;
+  text-align: center;
+}
+p{
+  margin: 1px;
+  width:95%;
+  text-align: left;
+}
+mat-checkbox{
+  width:95%;
+  color: white;
+}
+
+/* .doc-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+} */
+.doc-margin {
+  margin: 0 10px;
+}
+div.APPLIEDConfirm button:hover {
+  opacity:1;
+}
+div.APPLIEDConfirm button {
+  opacity:0.6;
+}
+mat-grid-tile {
+  position: absolute;
+  border-radius: 10px;
+  background-color:white;
+  box-shadow:   5px -5px rgba(51, 64, 79, 0.9) !important; 
+ text-align: start;
+  
+}    
+
+mat-form-field input {
+  position: relative;
+  color: black;
+  top: 0px;
+  padding: 0px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: large;
+}
+mat-form-field label {
+  position: relative;
+  color:blue;
+  top: 0px;
+}
+.mdc-floating-label .mat-mdc-floating-label  .mdc-floating-label--float-above {
+  color:blue !important;
+  font-weight: bold !important;
+  font-size: large !important;
+}
+mat-label {
+  color:blue !important;
+  font-weight: bold !important;
+  font-size: large !important;
+}
+
+label.mdc-label {
+  color:blue !important;
+  font-weight: bold !important;
+  font-size: large !important;
+}
+
+label {
+  color:blue !important;
+  font-weight: bold !important;
+  font-size: large !important;
+}

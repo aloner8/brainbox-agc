@@ -1,0 +1,124 @@
+<!-- <mat-tab-group  stretchTabs="true" dynamicHeight [(selectedIndex)]="selectedIndex" (selectedIndexChange)="selectedIndexChange($event)" >
+
+    <mat-tab label="Object & Target" style="background-image: url('../../../assets/img/table-box.svg');"> 
+         <cus-object-target  [Parent]="Me" [departmentlist]="departmentlist"  [targetpoint]="ObjectTarget" (SendEvents)="ChildEvent($event)" >
+
+         </cus-object-target>
+    </mat-tab>
+    <mat-tab label="Approval"> 
+       
+
+    </mat-tab>
+    <mat-tab label="Applied"> 
+          
+     </mat-tab>
+     <mat-tab label="My Ideas"> 
+         
+     </mat-tab>
+     <mat-tab label="Division Ideas"> 
+         
+ 
+     </mat-tab>
+     <mat-tab label="Rewards"> 
+         
+      </mat-tab>
+  </mat-tab-group>
+ -->
+
+ 
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel style="height: auto;overflow: scroll;" >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            Object & Target : Period
+        </mat-panel-title>
+        <mat-panel-description>
+          
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <cus-object-target  [Parent]="Me" [departmentlist]="departmentlist"  [targetpoint]="ObjectTarget"   (SendEvents)="ChildEvent($event)"  style="height: auto;">
+
+      </cus-object-target>
+  
+    </mat-expansion-panel>
+        <mat-expansion-panel style="height: auto;overflow: scroll;" >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            Object & Target :Date Range
+        </mat-panel-title>
+        <mat-panel-description>
+          
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+       <cus-object-target-custom  [Parent]="Me" [departmentlist]="departmentlist"  [targetpoint]="ObjectTargetCustom"   (SendEvents)="ChildEvent($event)"  style="height: auto;">
+
+      </cus-object-target-custom> 
+  
+    </mat-expansion-panel>
+    <mat-expansion-panel style="height: auto;overflow: scroll;" >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            Approval
+        </mat-panel-title>
+        <mat-panel-description>
+           
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <cus-approval-chart  [Parent]="Me"  [departmentlist]="departmentlist"  (SendEvents)="ChildEvent($event)"  >
+
+      </cus-approval-chart>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel style="height: auto;overflow: scroll;">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            Applied
+        </mat-panel-title>
+        <mat-panel-description>
+
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <cus-applied-chart  [Parent]="Me"  [departmentlist]="departmentlist"  (SendEvents)="ChildEvent($event)"  >
+
+      </cus-applied-chart>
+       
+    </mat-expansion-panel>
+    <mat-expansion-panel style="height: auto;overflow: scroll;">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          My Ideas
+        </mat-panel-title>
+        <mat-panel-description>
+      
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+ 
+    </mat-expansion-panel>
+   <!--  <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Division Ideas
+        </mat-panel-title>
+        <mat-panel-description>
+          Division Ideas
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+       
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Rewards
+        </mat-panel-title>
+        <mat-panel-description>
+          Rewards
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel> -->
+       
+
+  </mat-accordion>

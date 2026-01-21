@@ -1,0 +1,170 @@
+
+<div class="bg">
+       <form [formGroup]="UserForm"  >
+ 
+            <mat-grid-list cols="8" rowHeight="80px" gutterSize="5px">
+                
+                <mat-grid-tile
+                [colspan]="1"
+                [rowspan]="1">
+                <mat-form-field appearance="outline" style="width: 95%;"   >
+                    <mat-label>id</mat-label>
+                    <input matInput  placeholder="" style="width: 100%;"  formControlName="id"  id="id" name="id"  minlength="10"   >
+                     
+                  </mat-form-field>
+              </mat-grid-tile>
+        
+                  <mat-grid-tile
+                    [colspan]="3"
+                    [rowspan]="1">
+                    <mat-form-field appearance="outline" style="width: 95%;">
+                        <mat-label>username</mat-label>
+                        <input matInput  placeholder="" style="width: 100%;"  formControlName="username"  id="username" name="username"  minlength="10" >
+                         
+                      </mat-form-field>
+                  </mat-grid-tile>
+        
+                  <mat-grid-tile
+                  [colspan]="4"
+                  [rowspan]="1">
+                  <mat-form-field appearance="outline" style="width: 95%;">
+                    <mat-label>name</mat-label>
+                    <input matInput    placeholder="" style="width: 100%;"  formControlName="name"  id="name" name="name"  minlength="10" >
+                    
+                  </mat-form-field>
+                </mat-grid-tile>
+
+<!-- //row 2 -->
+
+
+  <mat-grid-tile
+  [colspan]="1"
+  [rowspan]="1">
+  <mat-form-field appearance="outline" style="width: 95%;">
+      <mat-label>initial</mat-label>
+      <input matInput    placeholder="" style="width: 100%;"  formControlName="initial"  id="initial" name="initial"  minlength="10" >
+       
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 95%;">
+    <mat-label>user_id_code</mat-label>
+    <input matInput    placeholder="" style="width: 100%;"  formControlName="user_id_code"  id="user_id_code" name="user_id_code"  minlength="10" >
+     
+  </mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="5"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 95%;">
+    <mat-label>e-mail</mat-label>
+    <input matInput   placeholder="" style="width: 100%;"  formControlName="email"  id="email" name="email"  minlength="10" >
+     
+  </mat-form-field>
+</mat-grid-tile>
+  <mat-grid-tile
+  [colspan]="3"
+  [rowspan]="1">
+ 
+    <mat-form-field  appearance="outline" >
+     
+      <mat-label>Division</mat-label>
+      <input matInput    placeholder="" style="width: 100%;"  formControlName="division"  id="division" name="division"  minlength="10" >
+    </mat-form-field>
+  
+</mat-grid-tile>
+
+   
+
+  <mat-grid-tile
+  [colspan]="2"
+  [rowspan]="1">
+  <mat-form-field appearance="outline" style="width: 95%;">
+    <mat-label>site</mat-label>
+    <input matInput    placeholder="" style="width: 100%;"  formControlName="site"  id="site" name="site"  minlength="10" >
+    
+  </mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="3"
+[rowspan]="2"  >
+<ul style="list-style-type: none;padding: 20px; width: 100%;margin: 0px;">
+  <li>
+    <mat-checkbox style="color: black;" formControlName="isapprover"  id="isapprover" name="isapprover"  [checked]="UserForm.get('isapprover')?.value==1"   >is approver</mat-checkbox>
+  </li>
+  <li>
+    <mat-checkbox style="color: black;" formControlName="iscoordinator"  id="iscoordinator" name="iscoordinator"  [checked]="UserForm.get('iscoordinator')?.value==1"  >is coordinator</mat-checkbox>
+  </li>
+  <li>
+    <mat-checkbox style="color: black;" formControlName="isadmin"  id="isapprover" name="isadmin"  [checked]="UserForm.get('isadmin')?.value==1"   >is admin</mat-checkbox>
+  </li>
+  <li>
+    <mat-checkbox style="color: black;" formControlName="active"  id="active" name="active"  [checked]="UserForm.get('active')?.value==1"    >is active</mat-checkbox>
+  </li>
+</ul>
+    
+   
+
+ 
+</mat-grid-tile>
+ 
+
+
+
+
+  <mat-grid-tile
+  [colspan]="2"
+  [rowspan]="1">
+  <mat-form-field appearance="outline" style="width: 95%;">
+    <mat-label>Create At</mat-label>
+    <input matInput  placeholder="" style="width: 100%;"  formControlName="created_at"  id="created_at" name="created_at"  minlength="10" >
+    
+    
+  </mat-form-field>
+</mat-grid-tile>
+ 
+<mat-grid-tile
+[colspan]="2"
+[rowspan]="1">
+<mat-form-field appearance="outline" style="width: 95%;">
+  <mat-label>lastupdate</mat-label>  
+  <input matInput    placeholder="" style="width: 100%;"  formControlName="updated_at"  id="updated_at" name="updated_at"  minlength="10" >
+  
+</mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="4"
+[rowspan]="1">
+
+    <mat-form-field  appearance="outline" style="width: 90%;" >
+      <mat-label>default Approver</mat-label>  
+      <input matInput    placeholder="" style="width: 100%;"  formControlName="default_approver"  id="site" name="site"  minlength="10" > 
+     
+    </mat-form-field>
+
+</mat-grid-tile>
+
+<mat-grid-tile
+[colspan]="4"
+[rowspan]="1">
+
+    <mat-form-field  appearance="outline" style="width: 90%;">
+      <mat-label>default_coordinator</mat-label>  
+      <input matInput    placeholder="" style="width: 100%;"  formControlName="default_coordinator"  id="site" name="site"  minlength="10" > 
+      
+    </mat-form-field>
+
+
+</mat-grid-tile>
+ 
+
+
+            </mat-grid-list>
+        </form>
+</div>

@@ -1,0 +1,163 @@
+
+<div class ="around" align="end"  >
+    <table class="header">
+      <tr>
+        <td style="width: 80%;text-align: left;" >Innovation & Suggestion Objectives and Targets  </td>
+        <td>
+          <mat-form-field  appearance="outline"   >
+            <mat-select    [(ngModel)]="filter" name="filter" (selectionChange)="StatusFilterChange($event)" >            
+              @for (list of list_target_year; track list ) {
+                <mat-option [value]="list.value">{{list.display}}</mat-option>
+              }
+            </mat-select>      
+            <mat-label>Period Name:</mat-label>
+          </mat-form-field>
+        </td>
+        <td>
+       <!--    <mat-form-field  appearance="outline" style="min-width: 150px;" >
+            <mat-label >Period range M/d/yyyy</mat-label>
+            <mat-date-range-input  style="color: white;"  [disabled]="!IsAdmin"  >
+              <input matStartDate placeholder="Start date"  style="color: white;"   [(ngModel)]="daterangeStart">
+              <input matEndDate placeholder="End date"   style="color: white;" [(ngModel)]="daterangeEnd">
+            </mat-date-range-input>  -->     
+            <!-- <mat-datepicker-toggle matIconSuffix [for]="picker"  style="color: black;" ></mat-datepicker-toggle> -->
+           <!--   <mat-date-range-picker #picker  style="color: white;" (closed)="DateChange($event)" ></mat-date-range-picker>
+          </mat-form-field>  -->
+          <mat-form-field appearance="outline" style="min-width: 150px;">
+            <mat-label>Period range (m/d/yyyy)</mat-label>
+            <mat-date-range-input [rangePicker]="picker" (closed)="DateChange($event)"  >
+              <input matStartDate placeholder="Start date"  style="color: white;"   [(ngModel)]="daterangeStart" >
+              <input matEndDate placeholder="End date"   style="color: white;" [(ngModel)]="daterangeEnd" >
+            </mat-date-range-input>             
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker style="color: white;" (closed)="DateChange($event)" ></mat-date-range-picker>
+          </mat-form-field>
+
+        </td>
+        <td>
+          <button mat-raised-button color="warn" style="margin-right: 5px;"  *ngIf="IsAdmin"  (click)="Save()" [disabled]="!hasedit"  ><mat-icon class="material-symbols-outlined"   >save</mat-icon>Save</button>
+          
+        </td>
+        <td>
+          <button mat-raised-button color="primary" style="margin-right: 5px;min-width: 150px;"  *ngIf="IsAdmin"  (click)="New()" ><mat-icon class="material-symbols-outlined"  >add_circle</mat-icon>New Period</button>
+        </td>
+
+      </tr>
+    </table>
+     <table class="detail" *ngIf="target_amount_row[0]">
+      <tr class="header">
+        <td>Mangement Objective</td>
+        <td>ME plus Goals</td>
+        <td>Criteria</td>
+        <td>Description</td>
+        <td style="width: 50px;" >Target</td>
+        <td style="width: 50px;">Unit</td>
+        <td style="width: 50px;">Target Payout (%)</td>
+
+      </tr>
+      <tr>
+        <td rowspan="2">Do saafe & stable operation</td>
+        <td rowspan="2">OEE and quality of work life</td>
+        <td>Safety, health and environment idea <br> ข้อเสนอด้านความปลอดภัย ชีวอนามัยและสิ่งแวดล้อม</td>
+        <td>Number of appiled idea on Safety, Health and Environment <br>จํานวนข้อเสนอที่ทําสําเร็จด้านความปลอดภัย ชีวอนามัยและสิ่งแวดล้อม</td>
+        <td>                      
+            <input matInput  (change)="EditAmount($event)"   style="width: 90%;font-weight: bold;"  [(ngModel)] = "target_amount_row[0].target"   >         
+        </td>
+        <td>Ideas</td>
+        <td> <input matInput  (change)="EditAmount($event)"    style="width: 90%;font-weight: bold;"  [(ngModel)] = "target_amount_row[0].payout"  > </td>
+      </tr>
+      <tr>
+        <td>Stable operation with high productivity idea<br> ข้อเสนอด้านการดําเนินงานที่มั่นคงด้วยผลผลิตที่สูง</td>
+        <td>
+          Number of appiled idea on productivity and stable operation <br>
+          จำนวนข้อเสนอที่ทำสำเร็จด้านการเพิ่มผลผลิตและการดำเนินงานที่มั่นคง
+        </td>
+        <td>                      
+            <input matInput  (change)="EditAmount($event)"    style="width: 90%;font-weight: bold;"   [(ngModel)] = "target_amount_row[1].target"  >         
+        </td>
+        <td>Ideas</td>
+        <td> <input matInput  (change)="EditAmount($event)"    style="width: 90%;font-weight: bold;"  [(ngModel)] = "target_amount_row[1].payout"   > </td>
+      </tr>
+      <tr>
+        <td rowspan="3">
+          Enhance competitiveness<br>
+          Cost efficiency<br>
+          in cost and quality<br>
+        </td>
+        <td rowspan="3">
+          Cost efficiency
+        </td>
+
+        <td>Cost saving idea <br>ข้อเสนอด้านการลดต้นทุน</td>
+        <td>Number of applied idea on cost saving<br> จํานวนข้อเสนอที่ทําสําเร็จด้านการลดต้นทุน</td>
+        <td>                      
+            <input matInput  (change)="EditAmount($event)"   style="width: 90%;font-weight: bold;"   [(ngModel)] = "target_amount_row[2].target"  >         
+        </td>
+        <td>Ideas</td>
+        <td> <input matInput  (change)="EditAmount($event)"  style="width: 90%;font-weight: bold;"  [(ngModel)] = "target_amount_row[2].payout"  > </td>
+      </tr>
+      <tr>
+        <td>Energy saving CO2 reduction idea <br>ข้อเสนอด้านการอนุรักษ์พลังงาน หรือการลด การปลดปล่อยคาร์บอนไดออกไซด์</td>
+        <td> Number of applied idea on energy saving<br>
+          จํานวนข้อเสนอที่ทําสําเร็จด้านการอนุรักษ์พลังงาน หรือการลดการปลดปล่อย</td>
+        <td>                      
+            <input matInput  (change)="EditAmount($event)"    style="width: 90%;font-weight: bold;"  [(ngModel)] = "target_amount_row[3].target"   >         
+        </td>
+        <td>Ideas</td>
+        <td> <input matInput  (change)="EditAmount($event)"   style="width: 90%;font-weight: bold;"  [(ngModel)] = "target_amount_row[3].payout"  > </td>
+      </tr>
+      <tr>
+        <td>Quality of products and services improvement idea<br> ข้อเสนอด้านการเพิ่มคุณภาพผลิตภัณฑ์และบริการ </td>
+        <td>Number of applied idea for better quality of products and services <br> จํานวนข้อเสนอที่ทําสําเร็จด้วยเพื่อปรับปรุงคุณภาพผลิตภัณฑ์และบริการ</td>
+        <td>                      
+            <input matInput  (change)="EditAmount($event)"   style="width: 90%;font-weight: bold;"   [(ngModel)] = "target_amount_row[4].target"  >         
+        </td>
+        <td>Ideas</td>
+        <td> <input matInput  (change)="EditAmount($event)"    style="width: 90%;font-weight: bold;"  [(ngModel)] = "target_amount_row[4].payout"  > </td>
+      </tr>
+      <tr>
+        <td>Increase customer <br>satisfaction</td>
+        <td>Cost efficiency and social care</td>
+        <td>Enhance internal customers idea <br>สนับสนุนข้อเสนอของลูกค้าภายใน</td>
+        <td>Number of applied idea with collaborative deparments<br> จํานวนข้อเสนอที่ทําสําเร็จด้วยความร่วมมือตั้งแต่ 2 ฝ่ายขึ้นไป</td>
+        <td>                      
+            <input matInput  (change)="EditAmount($event)"    style="width: 90%;font-weight: bold;"  [(ngModel)] = "target_amount_row[5].target"   >         
+        </td>
+        <td>Ideas</td>
+        <td> <input matInput  (change)="EditAmount($event)"    style="width: 90%;font-weight: bold;"  [(ngModel)] = "target_amount_row[5].payout"  > </td>
+      </tr>
+      <tr>
+        <td>Create further synergy</td>
+        <td>Cost effciency and <br>social care</td>
+        <td>External customers and partnerships idea (AGC group, GC, suppliers, external customers)<br> ข้อเสนอที่ร่วมมือกับลูกค้าและคู่ค้าภายนอก</td>
+        <td>Number of applied idea with external customers and partnership<br> จํานวนข้อเสนอที่ทําสําเร็จที่ทํากับลูกค้าและคู่ค้าภายนอก</td>
+        <td>                      
+            <input matInput  (change)="EditAmount($event)"    style="width: 90%;font-weight: bold;"  [(ngModel)] = "target_amount_row[6].target"   >         
+        </td>
+        <td>Ideas</td>
+        <td> <input matInput  (change)="EditAmount($event)"   style="width: 90%;font-weight: bold;" [(ngModel)] = "target_amount_row[6].payout"   > </td>
+      </tr>
+      <tr>
+        <td>Develop human resource</td>
+        <td>Skilled people</td>
+        <td>Involvement of people
+          การมีส่วนร่วมของพนักงาน
+        </td>
+        <td>Number of people who proposed idea <br>จํานวนพนักงานที่น่าเสนอข้อเสนอ</td>
+        <td>                      
+            <input matInput  (change)="EditAmount($event)"    style="width: 90%;font-weight: bold;"   [(ngModel)] = "target_amount_row[7].target"  >         
+        </td>
+        <td>People</td>
+        <td> <input matInput  (change)="EditAmount($event)"    style="width: 90%;font-weight: bold;" [(ngModel)] = "target_amount_row[7].payout"   > </td>
+      </tr>
+      <tr>
+        <td colspan="4">0.5% Payout is multiplied by total applied saving to get total reward payout.</td>
+        <td colspan="2">Total</td>
+        <td><input matInput  (change)="EditAmount($event)"    style="width: 90%;font-weight: bold;"   ></td>
+      </tr>
+
+
+     </table>
+    <!-- <mat-paginator [pageSizeOptions]="[ 20, 50,100]" aria-label="Select page of myhome ['my_ideas']" (page)="paginatorChange($event)"></mat-paginator> -->
+  </div>
+  

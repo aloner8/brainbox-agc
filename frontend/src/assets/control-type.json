@@ -1,0 +1,64 @@
+[
+    {
+        "id":1,
+        "name":"field input",
+        "dataType":"field",
+        "style":{},
+        "defaultPropertys":{
+            "style":{},
+            "inputType":"text",
+            
+        }
+        
+    },
+    {
+        "id":2,
+        "name":"field Select",
+        "dataType":"field",
+        "defaultPropertys":{}
+
+    },
+    {
+        "id":3,
+        "name":"field Datepicker",
+        "dataType":"field",
+        "defaultPropertys":{}
+
+    },
+    {
+        "id":4,
+        "name":"field CheckBox",
+        "dataType":"field",
+        "defaultPropertys":{}
+
+    },
+    {
+        "id":5,
+        "name":"field RadioGroup",
+        "dataType":"field",
+        "defaultPropertys":{}
+
+    },
+    {
+        "id":6,
+        "name":"field slider",
+        "dataType":"field",
+        "defaultPropertys":{}
+
+    },
+    {
+        "id":7,
+        "name":"field progreesBar",
+        "dataType":"field",
+        "defaultPropertys":{}
+
+    },
+    {
+        "id":8,
+        "name":"field textarea",
+        "dataType":"field",
+        "defaultPropertys":{}
+
+    }
+
+]

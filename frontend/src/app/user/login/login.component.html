@@ -1,0 +1,71 @@
+<div class="panel">
+  <mat-grid-list cols="5" rowHeight="100vh">
+    
+      <mat-grid-tile   [colspan]="1"  >
+        <mat-card class="login-card">
+   
+  
+          <mat-card-content class="card-container" >
+            
+            <img class="login-icon" [src]="BaseHref + 'assets/img/AGC-VINYTHAI-Logo.png'" alt="MEAN-Icon">
+            <img mat-card-image [src] ="BaseHref + 'assets/menu/divider.png'">
+            <br> 
+            <img mat-card-image [src] ="BaseHref + 'assets/img/logoBrainbox.png'" [style.width.%]="80" [style.paddingLeft.px]="20" >
+            
+            <p>
+              Welcome to AVT Innovation
+            </p>
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                 <!-- <input matInput placeholder="username">  -->
+                <!--  <input matInput type="text" value="username">    -->
+                <input matInput required  type="text"   [value]="username" (change)="UserInput($event)" appEnterAsTab>               
+                <mat-icon matSuffix >account_circle</mat-icon>             
+              </mat-form-field>
+               
+            </p>
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <!-- <input matInput placeholder="Placeholder"> -->
+                <input matInput [type]="showpassword"  required  [value]="password" (change)="PasswordInput($event)" (keyup.enter)="Login()" appEnterAsTab>
+                 
+                <mat-icon matSuffix (click)="showpassword=='password'?showpassword='text':showpassword='password';"> vpn_key</mat-icon>
+              </mat-form-field>
+            </p>
+          </mat-card-content>
+          <mat-card-actions  class="card-footer">
+             
+            <button mat-raised-button color="primary"  (click) ="Login()" >Login
+              <mat-icon matSuffix> vpn_key</mat-icon>
+            </button>
+            <br>
+            <button mat-raised-button color="warn" (click)="forgetPasswordDialog()" >Forget Password</button>
+           
+          </mat-card-actions>
+         
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="4" >
+        <div class="main">
+          <!-- <img mat-card-image [src] ="BaseHref + 'assets/img/login-bg3.jpg"> -->
+           <div class="bigtext">
+            <p class="bigtext">
+              Growing with You
+            </p>     
+            <p class="bigtext">
+              Growing with Innovation
+            </p>     
+            <p>
+              Empower all our employees to demonstrate "can do" spirit, 
+            commitment and accountability 
+            </p>
+           </div>
+        
+         </div>
+      </mat-grid-tile>
+  </mat-grid-list>
+
+ 
+</div>

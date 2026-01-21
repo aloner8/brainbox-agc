@@ -1,0 +1,18 @@
+
+<!-- <mat-dialog-content  style="background-image: url('../assets/img/importting.jpg');
+background-repeat: no-repeat;
+background-size:cover;" > -->
+<mat-dialog-content >
+<p mat-dialog-title  style="right: 10px;" >กำลังประมวลผล กรุณารอซักครู่...</p>
+<p mat-dialog-title > {{data.caption}} {{data.currentindex}} of {{data.totalrow}} </p>
+  <mat-progress-spinner   
+  color="info"
+  mode="indeterminate"
+  value="100" 
+  disableClose="true"
+  style="vertical-align: middle;align-items: center;text-align: center;"
+  >
+
+</mat-progress-spinner>
+</mat-dialog-content>
+

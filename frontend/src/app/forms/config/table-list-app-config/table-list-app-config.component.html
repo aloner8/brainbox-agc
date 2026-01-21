@@ -1,0 +1,53 @@
+
+<div class ="around" >
+   
+  <mat-form-field  appearance="outline">
+    <mat-icon class="material-symbols-outlined" matSuffix >search</mat-icon>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input  style="color: white;" >
+    <mat-label matSuffix >  Search</mat-label>
+  </mat-form-field>
+
+  <div style="height: 500px; overflow-y: scroll;" >
+  <table mat-table [dataSource]="dataSource" matSort #tabledetail  >
+   
+    <!-- ID Column -->
+    <ng-container matColumnDef="running">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> #</th>
+      <td mat-cell *matCellDef="let row" [style.border-bottom]="rowboderstyle" >
+         <a  class="runnumber" (click)="OpenDetail(row.project_id)" >  {{row.running}} </a>
+        </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="fullname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Config Name</th>
+      <td mat-cell *matCellDef="let row" [style.border-bottom]="rowboderstyle" [style.border-bottom]="'0.5px solid gray'"> {{row.fullname}} </td>
+    </ng-container>
+    <ng-container matColumnDef="division">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="min-width: 110px;">Valuee</th>
+      <td mat-cell *matCellDef="let row" [style.border-bottom]="rowboderstyle"> {{row.division}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+      <td mat-cell *matCellDef="let row" [style.border-bottom]="rowboderstyle">     <button   mat-menu-item (click)="OpenDetail(row.running)">
+        <mat-icon style="color: white;">edit_square</mat-icon>
+        
+      </button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style=" border-color: white" ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [style.border-bottom]="'0.5px solid gray'"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow >
+      <td class="mat-cell" colspan="4" >No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+</div>
+  
+  
+ 
+<mat-paginator [pageSizeOptions]="[ 20, 50,100]" aria-label="Select page of myhome ['my_ideas']" (page)="paginatorChange($event)"></mat-paginator>
+</div>

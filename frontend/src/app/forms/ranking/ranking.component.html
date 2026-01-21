@@ -1,0 +1,48 @@
+
+<div id="ranking" [style.width.px]="currentWidth" [style.height.px]="currentHeight" >
+<!--   <mat-grid-list cols="3" rowHeight="80px" >
+    <mat-grid-tile    [colspan]="1"   [rowspan]="3"  > 
+      <h1>AAAAAA</h1>
+    </mat-grid-tile>
+      <mat-grid-tile    [colspan]="1"   [rowspan]="1"  > 
+        <h1>BBBBB</h1>
+      </mat-grid-tile>
+        <mat-grid-tile    [colspan]="1"   [rowspan]="1"  > 
+          <h1>CCCC</h1>
+        </mat-grid-tile>
+          <mat-grid-tile    [colspan]="2"   [rowspan]="2"  >             
+            <progress-box [Value]="50" ></progress-box> 
+          </mat-grid-tile>
+  </mat-grid-list> -->
+
+  <table [width]="'100%'" [style.Top.px]="topcaptionstart" [style.position]="'absolute'" >
+
+    <tr>
+      <td [width]="'32%'"></td>
+      <td class="captionlevel" [style.fontSize]="captionlevelfontsize" >
+        {{userlevel.level_name}}!!
+      </td>
+      <td [width]="'25%'"  [style.fontSize]="iconinfofontsize">
+        <mat-icon class="material-symbols-outlined">
+        info
+        </mat-icon>
+        </td>
+        
+        
+    </tr>
+    <tr>
+      <td></td>
+      <td><p class="captionsub" [style.fontSize]="captionsubfontsize">Accumulated point</p></td>
+      <td><p class="captioninfo" [style.fontSize]="captioninfofontsize">{{userlevel.level_next}}</p></td>
+    </tr>
+    <tr  >
+      <td></td>
+      <td colspan="2" rowspan="2">
+        <progress-box [Value]="userlevel.my_point" [MaxValue]="userlevel.level_next_point"  [style.bottom.px]="0" ></progress-box>
+      </td>
+      
+    </tr>
+  
+  </table>
+  
+</div>

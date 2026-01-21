@@ -1,0 +1,24 @@
+<h2>Notification</h2>
+<div mat-dialog-actions style="position: relative; width: 100%;"  align="end">  
+   <button mat-raised-button color="primary" (click)="onReadAllClick()" style="right: 10px; position: relative;" >อ่านทั้งหมด</button>   
+    
+</div>
+<mat-dialog-content  >
+  
+<mat-selection-list #textmessage (selectionChange)="selectionChange($event)">
+    @for (message of memberlist; track message) {
+      <mat-list-option [value]="message" >
+        <p>{{  message.datealert | date: 'dd/MM/yyyy HH:mm'}} : 
+        {{  message.textmessage }} </p>
+        </mat-list-option>
+    }
+  </mat-selection-list>
+  
+
+</mat-dialog-content>
+<div mat-dialog-actions style="position: relative; width: 100%;"  align="end">  
+    
+    <button mat-raised-button color="primary" (click)="onNoClick()" style="right: 10px; position: relative;" >ปิด</button>   
+</div>
+
+  

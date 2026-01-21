@@ -1,0 +1,103 @@
+ 
+.topdetail {
+  background-color: blue;
+  color: white;
+}
+
+.mat-mdc-tab-body  .mat-mdc-tab-body-active {
+  overflow: visible !important;
+  
+}
+.savedraft {
+  background-image: url('../../../assets/img/save-draft-button.svg');
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+td.bgButtonCommand:hover {
+  background-color: rgba($color: #42e229, $alpha: 0.5);
+  
+}
+.bgButtonCommand:hover {
+ // background-color: rgba($color: #42e229, $alpha: 0.5);
+  opacity: 0.8;
+}
+
+ div.mat-tab-header.mat-mdc-tab-header {
+  width:900px !important ;
+  overflow: visible;
+  font-size: large;
+}
+
+
+div.mdc-tab--active {
+  background-color: transparent  !important;
+  background-image: url("../../../assets/img/tab-bg.svg") !important;
+  
+  overflow: visible  !important;
+  height: 50px;
+  z-index: 2;  
+  background-position:top;
+  background-size: contain;
+   
+}
+
+div.mat-ripple.mat-mdc-tab-ripple {
+    background-color: transparent  !important;
+    background-image: url("../../../assets/img/tab-bg.svg") !important;
+    background-repeat: no-repeat;
+    background-position:top;
+    background-size: contain;
+    overflow: visible  !important;
+    height: 50px;
+    z-index: 2;
+    opacity: 0.3;
+     
+  }
+span.mdc-tab__text-label{
+  left: 20px !important;
+  font-size:large;
+} 
+
+
+div.mat-ripple.mat-mdc-tab-ripple {
+  background-color: transparent  !important;
+  background-image: url("../../../assets/img/tab-bg.svg") !important;
+  background-size: cover  !important;
+  overflow: visible  !important;
+  height: 50px;
+  z-index: 2;
+  opacity: 0.3;
+  width: 200px;
+   
+}
+
+#mat-tab-label-0-0{
+  width: 200px;
+}
+#mat-tab-label-0-1{
+  width: 200px;
+}
+
+mat-accordion {
+  background-color: transparent;
+}
+
+mat-expansion-panel{
+  background-color: transparent;
+  color: white;
+  border-width: 2px;
+  border-color: white;
+  border-style: solid;
+}
+
+mat-panel-title {
+  color: white;
+}
+span.mat-expansion-indicator{
+  color: white;
+}
+
+
+.mat-expansion-indicator  .ng-trigger .ng-trigger-indicatorRotate .ng-star-inserted {
+  color: white;
+}

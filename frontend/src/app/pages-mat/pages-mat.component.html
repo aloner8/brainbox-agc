@@ -1,0 +1,69 @@
+
+<div class="pagearea">
+  <div class = "drawer_button" >
+   <!--  <button  class = "drawer_toggle" mat-mini-fab color="primary" >
+      <mat-icon class = "drawer_toggle" (click)="drawer.toggle()" >swap_horiz</mat-icon>
+    </button> -->
+    <mat-icon  (click)="drawer.toggle()"  style="font-size: xx-large;" >list</mat-icon>
+  </div>
+    <!-- <div class = "toolbar" *ngIf="CurrentForm=='home'" > -->
+      <div class = "toolbar" >
+        <a mat-button>          
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon class="material-symbols-outlined">person</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="selectMenuProfile()">
+              <mat-icon>dialpad</mat-icon>
+              <span>{{UserInfo.name?UserInfo.name:UserInfo.username}}</span>
+            </button>         
+            <button mat-menu-item (click)="LogOut()">
+              <mat-icon>logout</mat-icon>
+              <span>Log Out</span>
+            </button>
+          </mat-menu>
+      </a>
+      <!-- <a mat-button  (click)="SetPasswordAllUser()"> -->
+      <a mat-button (click)="selectMenuConfig()">
+          <mat-icon class="material-symbols-outlined"  >settings</mat-icon>
+      
+      </a>
+      <a mat-button (click)="OpenNotificationDialog()"  >
+          <mat-icon *ngIf="!UserInfo.notifications" >notification_important</mat-icon>
+          <mat-icon *ngIf="UserInfo.notifications"  [matBadge]="GetNotificationCount()" matBadgeColor="warn"  >notification_important</mat-icon>
+      
+      </a>
+
+      <a mat-button (click)="ExportExcel()"  >
+         
+        <mat-icon svgIcon="iconExcel"></mat-icon>
+    
+    </a>
+      
+    </div>
+    
+
+    <mat-drawer-container class="example-container" style="width: 100%; bottom: 0px; height: 95vh; " >
+      <!-- <mat-drawer #drawer id="drawer" [mode]="'side'" (opened)="drawer_opened==true"  (closed)="drawer_opened==false">  -->
+      <mat-drawer #drawer id="drawer" [mode]="'side'" > 
+        <menu-left [style.top.px]="0"  ></menu-left>
+        
+
+      </mat-drawer>
+    <mat-drawer-content>
+
+      <app-forms-custom    [formname]="CurrentForm" [style.width.%]="90" [style.width.%]="90"  [style.top.px]="150" ></app-forms-custom> 
+    </mat-drawer-content>
+  </mat-drawer-container>
+ 
+  
+</div>
+
+
+
+ 
+  
+
+
+ 
+ 

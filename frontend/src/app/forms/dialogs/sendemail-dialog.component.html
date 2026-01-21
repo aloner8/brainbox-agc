@@ -1,0 +1,173 @@
+
+
+<div class="sendemail-form">
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 180px;"><h2 mat-dialog-title > <mat-icon class="material-symbols-outlined">mail</mat-icon> Send Email </h2></td>
+            <td></td>
+            <td style="width: 30px;right: 10px;" ><h2 mat-dialog-title ><button (click)="onNoClick()"><mat-icon class="material-symbols-outlined">close</mat-icon> </button></h2></td>
+        </tr>
+        <tr>
+          <td>
+            
+          </td>
+          <td >
+            <p style="color: floralwhite; font-size: large; text-align: left;" >sended {{data.repeat_time}} time. last send {{data.send_at}} </p>
+            <p style="color: rgb(234, 56, 97); font-size: large; text-align: left;" >next send {{data.send_next}} </p>
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+    </table>
+    
+    
+    <mat-dialog-content  >
+
+       <table>
+        <tr>
+            <td class="label">
+<p >From:</p>
+            </td>
+            <td class="inputdata">
+                {{data.from}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+<p >To:</p>
+            </td>
+            <td class="inputdata">
+              <!--   <mat-chip-set aria-label="Fish selection">
+                    <mat-chip *ngIf="to_list[0]">{{to_list[0].display}}</mat-chip>                    
+                   
+                  </mat-chip-set> -->
+
+                    {{data.to}}
+            </td>
+        </tr>
+
+        <tr>
+            <td class="label">
+<p>CC:</p>
+            </td>
+            <td class="inputdata">
+ 
+             
+    <mat-form-field class="example-chip-list"  >
+        <!-- <mat-label>Team Member (รายชื่อทีมงาน)</mat-label> -->
+        <mat-chip-grid #chipGrid aria-label="Enter fruits" >
+          @for (member of cc_list ; track member) {
+            <mat-chip-row                  
+              (removed)="remove(member)"
+              [editable]="true"                  
+              [aria-description]="'press enter to edit ' + member.display">
+              {{member.display}}
+              <button matChipRemove [attr.aria-label]="'remove ' + member.display"   >
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+          }
+          <input placeholder="New member..."
+                [matChipInputFor]="chipGrid"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)"
+                [formControl]="myControl" 
+                [matAutocomplete]="automyControl"
+                 
+                />
+
+                
+                <mat-autocomplete #automyControl="matAutocomplete" [displayWith]="displayFn" (optionSelected) ="MemberSelected($event)">
+                  @for (option of filteredOptions | async;  track option) {
+                    <mat-option [value]="option">{{option.display}}</mat-option>
+                  }
+                  </mat-autocomplete>
+
+        </mat-chip-grid>
+      </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+<p>CC External:</p>
+            </td>
+            <td class="inputdata">
+ 
+             
+                    <mat-chip-grid #chipGridEx aria-label="Enter e-mail">
+                      @for (cc_ex of cc_external; track cc_ex) {
+                        <mat-chip-row
+                          (removed)="removeEx(cc_ex)"
+                          [editable]="false"
+                        >
+                          {{cc_ex}}
+                          <button matChipRemove [attr.aria-label]="'remove ' + cc_ex">
+                            <mat-icon>cancel</mat-icon> 
+                          </button>
+                        </mat-chip-row>
+                      }
+                      
+                       <input
+                        placeholder="..+.."
+                        [matChipInputFor]="chipGridEx"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="addEx($event)"                      
+                        matInput [formControl]="myControlEx" 
+                        type="email"
+                        pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required
+                      />                    
+                      
+                    </mat-chip-grid>
+   
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+<p >Subject:</p>
+            </td>
+            <td class="inputdata">
+                {{data.Subject}}
+            </td>
+        </tr>
+        <tr>
+        <td class="label">           
+                        </td>
+                        <td >
+                           
+                        </td>
+                    </tr>
+
+                    <tr style="vertical-align: top;" >
+                        <td class="label">
+                            <p >ข้อความ:</p>
+                                        </td>
+                                        <td class="html" >
+                                          <div class="NgxEditor__Wrapper">
+                                        <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+                                        <ngx-editor  [editor]="editor" [ngModel]="html" [disabled]="false" [placeholder]="'Type here...'"></ngx-editor>
+                                      </div>
+                                        </td>
+                                    </tr>
+                                    
+       </table>
+ 
+           
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions  align="end" >
+        <button mat-raised-button color="primary" (click)="sendemail()" >Send Email</button>
+        <button mat-raised-button (click)="onNoClick()">Cancel</button>
+       
+
+    </mat-dialog-actions>
+
+</div>
+
+
+
+
+

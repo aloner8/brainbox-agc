@@ -1,0 +1,51 @@
+
+div.sendemail-form {
+  min-width: 900px; 
+  background-color: #113595;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+input {
+  width: 600px;
+}
+h2 {
+  color: gold  !important;
+}
+mat-dialog-title{
+  color: gold  !important;
+}
+td.label{
+  color: white;
+  text-align: right;
+  width: 80px;
+}
+td.inputdata{
+  color:black;
+  background-color: white;
+  text-align: left;
+  width: 80%;
+}
+td.html{
+  color:black;
+  background-color: white;
+  text-align: left;
+  width: 80%;
+  height: 500px;
+}
+p{
+  margin: 1px;
+}
+.example-chip-list {
+width: 100%;
+height: auto;
+}

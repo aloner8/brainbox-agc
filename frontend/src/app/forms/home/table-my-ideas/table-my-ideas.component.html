@@ -1,0 +1,125 @@
+
+<div class ="around" >
+<!--   <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field> -->
+  <img mat-card-image class="tabButton" [src] ="BaseHref + 'assets/img/tab-MyIdeas.svg'"  style="width: auto; height:  70px;top:20px ;position: relative;z-index: 2
+  ;background-size: cover; "   >
+  <div class="mat-elevation-z8" >
+    
+    <mat-form-field  appearance="outline" >
+      <mat-select [style.border-color]="'white'"  [(ngModel)]="statusfilter" name="statusfilter" (selectionChange)="StatusFilterChange($event)" >
+        <mat-option>-- ALL --</mat-option>
+        @for (status of statuslist; track status ) {
+          <mat-option [value]="status.value">{{status.display}}</mat-option>
+        }
+      </mat-select>
+      <mat-label>Status</mat-label>
+    </mat-form-field>
+    <mat-form-field  appearance="outline" >
+      <mat-select [style.border-color]="'white'"  [(ngModel)]="categoryfilter" name="categoryfilter" (selectionChange)="StatusFilterChange($event)" >
+        <mat-option>-- ALL --</mat-option>
+        @for (list of categorylist; track list ) {
+          <mat-option [value]="list.value">{{list.display}}</mat-option>
+        }
+      </mat-select>
+      <mat-label>Category</mat-label>
+    </mat-form-field>
+    <mat-form-field  appearance="outline" >
+      <mat-label>Approver</mat-label>  
+      <input matInput  placeholder="" style="width: 100%;color: white;" [formControl]="ControlApprove_1" [matAutocomplete]="autoapprove1"  [(ngModel)]="approverfilter"  >   
+      <mat-autocomplete #autoapprove1="matAutocomplete" [displayWith]="displayFnMember" (optionSelected) ="StatusFilterChange($event)">
+        @for (option of filteredApprove_1   | async;  track option) {
+          <mat-option [value]="option">{{option.display}}</mat-option>
+        }
+        </mat-autocomplete>
+          @if (ControlApprove_1.value ) {
+            <mat-icon matSuffix  (click)="ControlApprove_1.setValue(null);StatusFilterChange($event)" >clear</mat-icon>
+          }
+    </mat-form-field>
+    <mat-form-field  appearance="outline" >
+      <mat-label>Coordinator</mat-label>  
+      <input matInput placeholder="" style="width: 100%;color: white;" [formControl]="ControlCoordinator_1" [matAutocomplete]="autocoordinator1" [(ngModel)]="coordinafilter" >   
+      <mat-autocomplete #autocoordinator1="matAutocomplete" [displayWith]="displayFnMember" (optionSelected) ="StatusFilterChange($event)">
+        @for (option of filteredCoordinator_1   | async;  track option) {
+          <mat-option [value]="option">{{option.display}}</mat-option>
+        }
+        </mat-autocomplete> 
+          @if (ControlCoordinator_1.value ) {
+            <mat-icon matSuffix  (click)="ControlCoordinator_1.setValue(null);StatusFilterChange($event)" >clear</mat-icon>
+          }
+    </mat-form-field>
+    <mat-form-field  appearance="outline" style=""  >
+      <mat-label >Enter a date range</mat-label>
+      <mat-date-range-input stateChanges="stateChanges"  [formGroup]="range" [rangePicker]="picker" style="color: white;"   >
+        <input matStartDate placeholder="Start date" formControlName="start"  style="color: white;"  [(ngModel)]="daterangeStart" >
+        <input matEndDate placeholder="End date" formControlName="end"  style="color: white;"  [(ngModel)]="daterangeEnd">
+      </mat-date-range-input>       
+      <mat-datepicker-toggle matIconSuffix [for]="picker"  style="color: white;" ></mat-datepicker-toggle>
+      <mat-date-range-picker #picker  style="color: white;"   (closed)="DateChange($event)" ></mat-date-range-picker>
+    </mat-form-field>
+    <mat-form-field  appearance="outline" style="width: 500px;" >
+      <mat-icon class="material-symbols-outlined" matPrefix >search </mat-icon>
+      <input matInput (keyup)="applyFilter($event)"  [(ngModel)]="filterinput" placeholder="Search" #input  style="color: white;" >
+      <mat-label matSuffix >  Search (Look in Ideas Name and Ideas Number)</mat-label>
+          @if (filterinput != '') {
+            <mat-icon matSuffix  (click)="filterinput=''" >clear</mat-icon>
+          }
+    </mat-form-field>
+    <div style="height: 500px; overflow-y: scroll;" >
+      <table mat-table [dataSource]="dataSource" matSort #tabledetail (matSortChange)="sortData($event)"  >
+     
+        <!-- ID Column -->
+        <ng-container matColumnDef="running">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> #Category </th>
+          <td mat-cell *matCellDef="let row" [style.border-bottom]="rowboderstyle" >
+            <a  class="runnumber" (click)="OpenDetail(row.project_id)" >  {{row.running}} </a>
+             <p>{{row.subideasname}}</p>
+            </td>
+        </ng-container>
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Ideas Name </th>
+          <td mat-cell *matCellDef="let row" [style.border-bottom]="rowboderstyle" [style.border-bottom]="'0.5px solid gray'"> {{row.ideasname}} </td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="idea_by">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Created by </th>
+          <td mat-cell *matCellDef="let row" [style.border-bottom]="rowboderstyle"> {{row.create_by}} </td>
+        </ng-container>
+    
+       
+        <ng-container matColumnDef="current_status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let row" [style.border-bottom]="rowboderstyle">            
+            <status-img [Value] = "0" [Caption] = "row.currentstatus" style="width: 100%;height: auto;"   ></status-img>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="suggest_date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="min-width: 110px;" > Date </th>
+          <td mat-cell *matCellDef="let row" [style.border-bottom]="rowboderstyle"> {{row.suggest_date}} </td>
+        </ng-container>
+        <ng-container matColumnDef="pointideas">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Point </th>
+          <td mat-cell *matCellDef="let row" [style.border-bottom]="rowboderstyle"> {{row.pointideas}} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" style=" border-color: white" ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [style.border-bottom]="'0.5px solid gray'" (click)="OpenDetail(row.project_id)"></tr>
+    
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow >
+          <td class="mat-cell" colspan="4" >No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+    </div>
+    
+  
+    
+    
+  </div>
+  <mat-paginator [pageSizeOptions]="[  20, 50,100,500]" aria-label="Select page of myhome ['my_ideas']" (page)="paginatorChange($event)"></mat-paginator>
+</div>
