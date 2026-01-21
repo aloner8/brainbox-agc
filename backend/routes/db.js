@@ -34,7 +34,7 @@ router.get('/users/:id', async (req, res, next) => {
 /**
  * Call stored procedure
  */
-router.post('/call-proc', async (req, res, next) => {
+router.post('/pg-call-proc', async (req, res, next) => {
   try {
     const { procname, jsonparm } = req.body;
     await callProc(procname, jsonparm);
@@ -47,7 +47,7 @@ router.post('/call-proc', async (req, res, next) => {
 /**
  * Call function
  */
-router.post('/call-func', async (req, res, next) => {
+router.post('/pg-call-func', async (req, res, next) => {
   try {
     const { funcname, jsonparm } = req.body;
     const rows = await callFunc(funcname, jsonparm);

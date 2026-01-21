@@ -283,11 +283,11 @@ openDialog(): void {
 
 
     getOTPChangePassword(username:string,email:string){
-      return this.http.get<any>(rootpoint + `/user/otp/${username}/${email}`)             
+      return this.http.get<any>(rootpoint + `/password/otp/${username}/${email}`)             
    }
    ChangePassword(username:string,otp:string,newPassword:string,employee_code:string){
       const _api = this
-       return this.http.post<any>(rootpoint + '/user/editpassword', {username:username,otp:otp,newPassword:newPassword,employee_code:employee_code}, httpOptions).pipe(
+       return this.http.post<any>(rootpoint + '/password/change', {username:username,otp:otp,newPassword:newPassword,employee_code:employee_code}, httpOptions).pipe(
           tap((s: any) =>{
        //console.log(s)
           //  _api.dialog.closeAll()
@@ -299,14 +299,14 @@ openDialog(): void {
         );
   }
   ChangePasswordFork(username:string){
-    return this.http.get<any>(rootpoint + `/user/editpassword/${username}`)             
+    return this.http.get<any>(rootpoint + `/password/change/${username}`)             
  }
 /*   allusername(){
     return this.http.get<any>(rootpoint + `/user/allusername`)             
  } */
   Login(username:string,password:string){
   
-         return this.http.post<any>(rootpoint + '/user/login', {username:username,password:password}, httpOptions).pipe(
+         return this.http.post<any>(rootpoint + '/auth/login', {username:username,password:password}, httpOptions).pipe(
           tap((s: any) =>{
        console.log('Login:',s)
           //  _api.dialog.closeAll()
@@ -319,7 +319,7 @@ openDialog(): void {
 
 }
 CheckToken(usertoken:string){
-  return this.http.get<any>(rootpoint + `/user/check_token/${usertoken}`)             
+  return this.http.get<any>(rootpoint + `/auth/check_token/${usertoken}`)             
 }
 
  
