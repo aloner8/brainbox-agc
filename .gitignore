@@ -2,6 +2,9 @@
 pgdata/
 database/
 data/
+pgadmin/
+**/pgadmin/
+**pgadmin**
 **/pgdata/
 **/database/
 **/data/
@@ -21,3 +24,4 @@ build/
 # --- OS ---
 .DS_Store
 Thumbs.db
+pgadmin/dev/sessions/**
