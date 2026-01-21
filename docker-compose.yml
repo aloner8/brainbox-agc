@@ -9,20 +9,19 @@ networks:
 services:
 
   nginx:
-    image: nginx:alpine
-    container_name: brainbox_nginx_dev
-    ports:
-      - "81:80"
-    volumes:
-      # ⚠️ dev ใช้ dist ที่ build local
-      #- ./frontend/dist/form-mat/browser:/usr/share/nginx/html:ro
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    networks:
-      - net_web
-      - net_api
-    depends_on:
-      - backend
-    restart: unless-stopped
+nginx:
+  build:
+    context: .
+    dockerfile: nginx/Dockerfile   # 👈 ใช้ Dockerfile ที่ build Angular
+  container_name: brainbox_nginx_dev
+  ports:
+    - "81:80"
+  networks:
+    - net_web
+    - net_api
+  depends_on:
+    - backend
+  restart: unless-stopped
 
 
   backend:
