@@ -94,6 +94,7 @@ export class AppComponent {
     {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
     {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
   ];
+  buildVersion = new Date().toISOString();
 
   typesOfPage: any = [{Caption: "WWW Page" , PageType:1 }
     ,{Caption: "One Form" , PageType:2 }
