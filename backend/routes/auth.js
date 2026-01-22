@@ -43,7 +43,7 @@ router.post('/login', async (req, res, next) => {
     const accessToken = signAccessToken({
       id: user.id,
       username: user.username,
-      role: user.role
+      role:'1'
     });
     const refreshToken = signRefreshToken({ id: user.id });
 
