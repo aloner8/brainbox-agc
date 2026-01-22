@@ -26,6 +26,6 @@ jobs:
         with:
           context: ./frontend
           push: true
-          tags: |
-            ghcr.io/${{ github.repository_owner }}/brainbox-frontend:latest
-            ghcr.io/${{ github.repository_owner }}/brainbox-frontend:${{ github.sha }}
+          # tags: |
+          #   ghcr.io/${{ github.repository_owner }}/brainbox-frontend:latest
+          #   ghcr.io/${{ github.repository_owner }}/brainbox-frontend:${{ github.sha }}
