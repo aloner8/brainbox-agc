@@ -10,16 +10,16 @@ COPY frontend/ .
 RUN npm run build
 
 # ---------- Runtime: Nginx ----------
-#FROM nginx:alpine
+FROM nginx:alpine
 
 # ลบ default config
-#RUN rm /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/conf.d/default.conf
 
 # ใส่ nginx config ของเรา
-#COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 # เอา Angular build มาใส่
-#COPY --from=build /app/dist/browser  /usr/share/nginx/html
+COPY --from=build /app/dist/browser  /usr/share/nginx/html
 
-#EXPOSE 80
-#CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
