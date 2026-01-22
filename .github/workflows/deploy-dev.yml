@@ -1,0 +1,24 @@
+name: Deploy Brainbox Dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy with Docker Compose
+        run: |
+          cd /opt/apps/alonersoft/brainbox/brainbox-agc
+          docker compose build
+          docker compose up -d
+
+      - name: Reload Nginx
+        run: |
+          sudo systemctl reload nginx
