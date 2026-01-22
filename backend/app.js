@@ -17,6 +17,7 @@ app.use('/password', require('./routes/password'));
 app.use('/user', require('./routes/users'));
 app.use('/db', require('./routes/db'));
 
+
 app.use((req, res) => {
   res.status(404).json({ message: 'Not Found' });
 });
