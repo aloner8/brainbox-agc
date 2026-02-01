@@ -22,7 +22,3 @@ jobs:
           cd /opt/apps/alonersoft/brainbox/brainbox-agc
           docker compose build
           docker compose up -d
-
-      - name: Reload Nginx
-        run: |
-          sudo systemctl reload nginx
