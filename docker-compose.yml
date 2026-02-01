@@ -1,4 +1,3 @@
-version: "3.9"
 
 networks:
   net_api:
@@ -9,13 +8,28 @@ services:
 
   nginx:
     build: .
-    container_name: brainbox_nginx_dev
+    container_name: brainbox_nginx_prod
     ports:
       - "127.0.0.1:8081:80"
-    networks:
-      - net_api
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
     depends_on:
       - backend
+    networks:
+      - net_api
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    container_name: brainbox_backend_prod
+    expose:
+      - "3000"
+    env_file:
+      - ./backend/.env.dev
+    networks:
+      - net_api
+      - net_db
+    restart: unless-stopped
 
   postgres:
     image: postgres:16
