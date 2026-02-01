@@ -7,7 +7,7 @@ networks:
 services:
 
   nginx:
-    build: .
+    build: ./nginx
     container_name: brainbox_nginx_prod
     ports:
       - "127.0.0.1:8081:80"
