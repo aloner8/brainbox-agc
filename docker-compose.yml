@@ -10,10 +10,10 @@ services:
 
   nginx:
     context: .
-    dockerfile: ./nginx/Dockerfile
-    container_name: brainbox_nginx_dev
+    dockerfile: nginx/Dockerfile
     ports:
       - "127.0.0.1:8081:80"
+    container_name: brainbox_nginx_dev
     volumes:
       - ./nginx:/etc/nginx/conf.d
     depends_on:
