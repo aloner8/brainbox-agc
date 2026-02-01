@@ -1,26 +1,16 @@
-
-networks:
-  net_api:
-  net_db:
-  net_admin:
-
 services:
-
-
 
   nginx:
     build:
       context: .
       dockerfile: nginx/Dockerfile
+    container_name: brainbox_nginx_dev
     ports:
       - "127.0.0.1:8081:80"
-    container_name: brainbox_nginx_dev
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
     depends_on:
       - backend
     networks:
-      - net_api
+      - brainbox-net
     restart: unless-stopped
 
   backend:
@@ -30,9 +20,10 @@ services:
       - "3000"
     env_file:
       - ./backend/.env.dev
+    depends_on:
+      - postgres
     networks:
-      - net_api
-      - net_db
+      - brainbox-net
     restart: unless-stopped
 
   postgres:
@@ -43,7 +34,7 @@ services:
     env_file:
       - ./database/.env.dev
     networks:
-      - net_db
+      - brainbox-net
     restart: unless-stopped
 
   pgadmin:
@@ -53,7 +44,11 @@ services:
       - "127.0.0.1:5050:80"
     env_file:
       - ./pgadmin/.env.dev
-    networks:
-      - net_admin
     depends_on:
       - postgres
+    networks:
+      - brainbox-net
+    restart: unless-stopped
+
+networks:
+  brainbox-net:
