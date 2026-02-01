@@ -6,9 +6,12 @@ networks:
 
 services:
 
+
+
   nginx:
-    build: ./nginx
-    container_name: brainbox_nginx_prod
+    context: .
+    dockerfile: nginx/Dockerfile
+    container_name: brainbox_nginx_dev
     ports:
       - "127.0.0.1:8081:80"
     volumes:
@@ -21,7 +24,7 @@ services:
 
   backend:
     build: ./backend
-    container_name: brainbox_backend_prod
+    container_name: brainbox_backend_dev
     expose:
       - "3000"
     env_file:
