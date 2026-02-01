@@ -1,44 +1,21 @@
 version: "3.9"
 
 networks:
-  net_web:
   net_api:
   net_db:
   net_admin:
 
 services:
 
-  frontend:
-    build: ./frontend
-    container_name: brainbox_frontend_dev
-    networks:
-      - net_web
-    restart: unless-stopped
-
   nginx:
-    image: nginx:alpine
+    build: .
     container_name: brainbox_nginx_dev
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - "127.0.0.1:8081:80"
     networks:
-      - net_web
       - net_api
     depends_on:
-      - frontend
       - backend
-    restart: unless-stopped
-
-  backend:
-    build: ./backend
-    container_name: brainbox_backend_dev
-    expose:
-      - "3000"
-    env_file:
-      - ./backend/.env.dev
-    networks:
-      - net_api
-      - net_db
-    restart: unless-stopped
 
   postgres:
     image: postgres:16
